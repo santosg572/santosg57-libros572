@@ -1,0 +1,1227 @@
+Chapter 1 Introductory Measure Theory
+====================================
+
+**1 Probability Theory: An Introduction**
+
+The object of probability theory is to describe and investigate mathematical models
+of random phenomena, primarily from a theoretical point of view. Closely related to
+probability theory is statistics, which is concerned with creating principles, methods,
+and criteria in order to treat data pertaining to such (random) phenomena or data
+from experiments and other observations of the real world, by using, for example,
+the theories and knowledge available from the theory of probability.
+
+Probability models thus aim at describing random experiments, that is, experi-
+ments that can be repeated (indefinitely) and where future outcomes cannot be exactly
+predicted — due to randomness — even if the experimental situation at hand can be
+fully controlled.
+
+The basis of probability theory is the probability space. The key idea behind
+probability spaces is the stabilization of the relative frequencies. Suppose that we
+perform “independent” repetitions of a random experiment and that we record each
+time if some “event” A occurs or not (although we have not yet mathematically
+defined what we mean by independence or by an event). Let fn(A) denote the number
+of occurrences of A in the first n trials, and rn(A) the relative frequency, rn(A) =
+fn(A)/n. Since the dawn of history one has observed the stabilization of the relative
+frequencies, that is, one has observed that (it seems that)
+
+rn(A) converges to some real number as n → ∞.
+
+The intuitive interpretation of the probability concept is that if the probability of
+some event A is 0.6, one should expect that by performing the random experiment
+“many times” the relative frequency of occurrences of A should be approximately
+0.6.
+
+The next step is to axiomatize the theory, to make it mathematically rigorous. Although games of chance have been performed for thousands of years,
+a mathematically rigorous treatment of the theory of probability only came about in
+the 1930s by the Soviet/Russian mathematician A.N. Kolmogorov (1903–1987) in
+his fundamental monograph Grundbegriffe der Wahrscheinlichkeitsrechnung [170],
+which appeared in 1933.
+
+The first observation is that a number of rules that hold for relative frequencies
+should also hold for probabilities. This immediately calls for the question “which is
+the minimal set of rules?”
+
+In order to answer this question one introduces the probability space or probability
+triple (Ω, F, P), where
+
+• Ω is the sample space;
+• F is the collection of events;
+• P is a probability measure.
+
+The fact that P is a probability measure means that it satisfies the three Kolmogorov
+axioms (to be specified ahead).
+
+In a first course in probability theory one learns that
+
+“the collection of events = the subsets of Ω”,
+
+maybe with an additional remark that this is not quite true, but true enough for the
+purpose of that course.
+
+To clarify the situation we need some definitions and facts from measure theory
+in order to answer questions such as
+
+“What does it mean for a set to be measurable?”
+
+After this we shall return to a proper definition of the probability space.
+
+**2 Basics from Measure Theory**
+
+In addition, to straighten out the problems raised by such questions, we need rules
+for how to operate on what we shall define as events. More precisely, a problem may
+consist of finding the probability of one or the other of two things happening, or for
+something not to happen, and so on. We thus need rules and conventions for how
+to handle events, how we can combine them or not combine them. This means i.a.
+that we need to define collections of sets with a certain structure. For example, a
+collection such that the intersection of two events is an event, or the collection of
+sets such that the complement of an event is an event, and also rules for how various
+collections connect. This means that we have to confront ourselves with some notions
+from measure theory. Since this is rather a tool than a central theme of this book we
+confine ourselves to an overview of the most important parts of the topic, leaving
+some of the “routine but tedious calculations” as exercises.
+
+**2.1 Sets**
+
+**Definitions; Notation**
+
+A set is a collection of “objects”, concrete or abstract, called elements. A set is finite
+if the number of elements is finite, and it is countable if the number of elements is
+countable, that is, if one can label them by the positive integers in such a manner that
+no element remains unlabeled. Sets are usually denoted by capitals from the early
+part of the alphabet, A, B, C, and so on. If several sets are related, “of the same kind”,
+it is convenient to use the same letter for them, but to add indices; A1, A2, A3, . . ..
+
+The set A = {1, 2, . . . , n} is finite; |A| = n. The natural numbers, N constitute
+a countable set, and so do the set of rationals, Q, whereas the set of irrationals and
+the set of reals, R, are uncountable, as is commonly verified by Cantor’s diagonal
+method. Although the natural numbers and the reals belong to different collections of
+sets they are both infinite in the sense that the number of elements is infinite in both
+sets, but the infinities are different. The same distinction holds true for the rationals
+and the irrationals. Infinities are distinguished with the aid of the cardinal numbers,
+which came about after Cantor’s proof of the fact that the infinity of the reals is larger
+than that of the natural numbers, that there are “more” reals than natural numbers.
+Cardinal numbers are denoted by the Hebrew letter alef, where the successively larger
+cardinal numbers have increasing indices. The first cardinal number is ℵ0 = |N|, the
+cardinality of N. Moreover, |R| = 2ℵ0 .
+
+Let us mention in passing that a long-standing question, in fact, one of Hilbert’s
+famous problems, has been whether or not there exist infinities between |N| and |R|.
+The famous continuum hypothesis states that this is not the case, a claim that can
+be formulated as ℵ1 = 2ℵ0 . The interesting fact is that it has been proved that this
+claim can neither be proved nor disproved within the usual axiomatic framework of
+mathematics. Moreover, one may assume it to be true or false, and neither assump-
+tion will lead to any contradictory results. The continuum hypothesis is said to be
+undecidable. For more, see [51].
+
+**Set Operations**
+
+Just as real (or complex) numbers can be added or multiplied, there exist operations
+on sets. Let A, A1, A2, . . . and B, B1, B2, . . . be sets.
+
+• Union: A ∪ B = {x : x ∈ A or x ∈ B};
+• Intersection: A ∩ B = {x : x ∈ A and x ∈ B};
+• Complement: Ac = {x : x /∈ A};
+• Difference: A  B = A ∩ Bc;
+• Symmetric difference: AB = (AB) ∪ (BA)
+
+We also use standard notations such as ∪n
+k=1 Ak and ∩∞
+j=1 B j for unions and inter-
+sections of finitely or countably many sets.
+
+Exercise 2.1 Check to what extent the associative and distributive rules for these
+operations are valid. 
+
+Some additional terminology:
+
+• the empty set: ∅;
+• subset: A is a subset of B, A ⊂ B, if x ∈ A =⇒ x ∈ B;
+• disjoint: A and B are disjoint if A ∩ B = ∅;
+• power set: P(Ω) = {A : A ⊂ Ω};
+• {An, n ≥ 1} is non-decreasing, An ↗, if A1 ⊂ A2 ⊂ · · · ;
+• {An, n ≥ 1} is non-increasing, An ↘ , if A1 ⊃ A2 ⊃ · · · .
+
+The de Morgan formulas,
+
+( n⋃
+k=1
+Ak
+)c
+=
+n⋂
+k=1
+Ac
+k and
+( n⋂
+k=1
+Ak
+)c
+=
+n⋃
+k=1
+Ac
+k , (2.1)
+
+can be verified by picking ω ∈ Ω belonging to the set made up by the left-hand
+side and then show that it also belongs to the right-hand side, after which one does
+the same the other way around (please do that!). Alternatively one realizes that both
+members express the same fact. In the first case, this is the fact that an element that
+does not belong to any Ak whatsoever belongs to all complements, and therefore to
+their intersection. In the second case this is the fact that an element that does not
+belong to every Ak belongs to at least one of the complements.
+
+**Limits of Sets**
+
+It is also possible to define limits of sets. However, not every sequence of sets has a
+limit.
+
+**Definition 2.1** Let {An, n ≥ 1} be a sequence of subsets of Ω. We define
+
+A∗ = lim inf
+n→∞ An =
+∞⋃
+n=1
+∞⋂
+m=n
+Am,
+A∗ = lim sup
+n→∞
+An =
+∞⋂
+n=1
+∞⋃
+m=n
+Am.
+
+If the sets A∗ and A∗ agree, then
+
+A = A∗ = A∗ = lim
+n→∞ An. 
+
+One instance when a limit exists is when the sequence of sets is monotone.
+
+**Proposition 2.1** Let {An, n ≥ 1} be a sequence of subsets of Ω.
+
+(i) If A1 ⊂ A2 ⊂ A3 · · · , then
+lim
+n→∞ An =
+∞⋃
+n=1
+An.
+(ii) If A1 ⊃ A2 ⊃ A3 · · · , then
+lim
+n→∞ An =
+∞⋂
+n=1
+An.
+
+Exercise 2.2 Prove the proposition. 
+
+**2.2 Collections of Sets**
+
+Collections of sets, are defined according to a setup of rules. Different rules yield dif-
+ferent collections. Certain collections are more easy to deal with than others depend-
+ing on the property or theorem to prove. We now present a number of rules and
+collections, as well as results on how they connect. Since much of this is more or less
+well known to a mathematics student we leave essentially all proofs, which consist
+of longer or shorter, sometimes routine but tedious, manipulations, as exercises.
+
+Let A be a non-empty collection of subsets of Ω, and consider the following set
+relations:
+
+(a) A ∈ A =⇒ Ac ∈ A;
+
+(b) A, B ∈ A =⇒ A ∪ B ∈ A;
+
+(c) A, B ∈ A =⇒ A ∩ B ∈ A;
+
+(d) A, B ∈ A, B ⊂ A =⇒ AB ∈ A;
+
+(e) An ∈ A, n ≥ 1, =⇒ ⋃∞n=1 An ∈ A;
+
+(f) An ∈ A, n ≥ 1, Ai ∩ A j = ∅, i  = j =⇒ ⋃∞n=1 An ∈ A;
+
+(g) An ∈ A, n ≥ 1, =⇒ ⋂∞n=1 An ∈ A;
+
+(h) An ∈ A, n ≥ 1, An ↗ =⇒ ⋃∞n=1 An ∈ A;
+
+(j) An ∈ A, n ≥ 1, An ↘ =⇒ ⋂∞n=1 An ∈ A
+.
+A number of relations among these rules and extensions of them can be established.
+For example (a) and one of (b) and (c), together with the de Morgan formulas, yield
+the other; (a) and one of (e) and (g), together with the de Morgan formulas, yield the
+other; (b) and induction shows that (b) can be extended to any finite union of sets;
+(c) and induction shows that (c) can be extended to any finite intersection of sets,
+and so on.
+
+**Exercise 2.3** Check these statements, and verify some more. 
+
+Here are now definitions of some collections of sets.
+
+**Definition 2.2** Let A be a collection of subsets of Ω.
+
+• A is an algebra or a field if Ω ∈ A and properties (a) and (b) hold;
+• A is a σ-algebra or a σ-field if Ω ∈ A and properties (a) and (e) hold;
+• A is a monotone class if properties (h) and (j) hold;
+• A is a π-system if property (c) holds;
+• A is a Dynkin system if Ω ∈ A, and properties (d) and (h) hold. 
+
+Remark 2.1 Dynkin systems are also called λ-systems.
+
+Remark 2.2 The definition of a Dynkin system varies. One alternative, in addition
+to the assumption that Ω ∈ A, is that (a) and (f) hold. 
+
+**Exercise 2.4** The obvious exercise is to show that the two definitions of a Dynkin
+system are equivalent. 
+
+The definitions of the different collections of sets are obviously based on minimal
+requirements. By manipulating the different properties (a)–(j), for example together
+with the de Morgan formulas, other properties can be derived. The following relations
+between different collections of sets are obtained by such manipulations.
+
+**Theorem 2.1** The following connections hold:
+
+1. Every algebra is a π-system.
+
+2. Every σ-algebra is an algebra.
+
+3. An algebra is a σ-algebra if and only if it is a monotone class.
+
+4. Every σ-algebra is a Dynkin system.
+
+5. A Dynkin system is a σ-algebra if and only if it is π-system.
+
+6. Every Dynkin system is a monotone class.
+
+7. Every σ-algebra is a monotone class.
+
+8. The power set of any subset of Ω is a σ-algebra on that subset.
+
+9. The intersection of any number of σ-algebras, countable or uncountable, is, again, a σ-algebra.
+
+10. The countable union of a non-decreasing sequence of σ-algebras is an algebra, but not necessarily a σ-algebra.
+
+11. If A is a σ-algebra, and B ⊂ Ω, then B ∩A = {B ∩ A : A ∈ A} is a σ-algebraon B.
+
+12. If Ω and Ω ′ are sets, A′ a σ-algebra on Ω ′ and T : Ω → Ω ′ a mapping, then
+T −1(A′) = {T −1(A′) : A′ ∈ A′} is a σ-algebra on Ω.
+
+**Exercise 2.5** 
+
+(a) Prove the above statements.
+
+(b) Find two σ-algebras, the union of which is not an algebra (only very few elements
+in each suffice).
+
+(c) Prove that if, for the infinite set Ω, A consists of all A ⊂ Ω, such that either A
+or Ac is finite, then A is an algebra, but not a σ-algebra. 
+
+**2.3 Generators**
+
+Let A be a collection of subsets of Ω. Since the power set, P(Ω), is a σ-algebra,
+it follows that there exists at least one σ-algebra containing A. Since, moreover, the
+intersection of any number of σ-algebras is, again, a σ-algebra, there exists a smallest
+σ-algebra containing A. In fact, let
+
+F ∗ = {σ-algebras ⊃ A}.
+
+The smallest σ-algebra containing A equals
+
+⋂
+G∈F ∗
+G,
+
+and is unique since we have intersected all σ-algebras containing A.
+
+**Definition 2.3** Let A be a collection of subsets of Ω. The smallest σ-algebra con-
+taining A, σ{A}, is called the σ-algebra generated by A. Similarly, the smallest
+Dynkin system containing A, D{A}, is called the Dynkin system generated by A,
+and the smallest monotone class containing A, M{A}, is called the monotone class
+generated by A. In each case A is called the generator of the actual collection. 
+
+Remark 2.3 The σ-algebra generated by A is also called “the minimal σ-algebra
+containing A”. Similarly for the other collections.
+
+Remark 2.4 Let {An, n ≥ 1} be σ-algebras. Even though the union need not be a
+σ-algebra, σ{⋃∞
+n=1 An}, that is, the σ-algebra generated by {An, n ≥ 1}, always
+exists. 
+
+9999
+
+**Exercise 2.6** Prove that
+(i) If A = A, a single set, then σ{A} = σ{A} = {∅, A, Ac, Ω}.
+(ii) If A is a σ-algebra, then σ{A} = A. 
+The importance and usefulness of generators is demonstrated by the following two
+results.
+Theorem 2.2 Let A be an algebra. Then
+M{A} = σ{A}.
+Proof Since every σ-algebra is a monotone class (Theorem 2.1) and M{A} is the
+minimal monotone class containing A, we know from the outset that M{A} ⊂ σ{A}.
+To prove the opposite inclusion we must, due to the minimality of σ{A}, prove that
+M{A} is a σ-algebra, for which it is sufficient to prove that M{A} is an algebra
+(Theorem 2.1 once more). This means that we have to verify that properties (a) and
+(b) hold
+
+ntroductory Measure Theory
+{
+B ∈ M{A} =⇒ Bc ∈ M{A}, and
+B, C ∈ M{A} =⇒ B ∪ C ∈ M{A}. (2.2)
+Toward this end, let
+E1 = {B ∈ M{A} : B ∪ C ∈ M{A} for all C ∈ A},
+E2 = {B ∈ M{A} : Bc ∈ M{A}}.
+We first note that E1 is a monotone class via the identities
+( ∞⋂
+k=1
+Bk
+)
+∪ C =
+∞⋂
+k=1
+(Bk ∪ C) and
+( ∞⋃
+k=1
+Bk
+)
+∪ C =
+∞⋃
+k=1
+(Bk ∪ C), (2.3)
+and that E2 is a monotone class via the de Morgan formulas (2.1).
+Secondly, by definition, A ⊂ M{A}, and by construction,
+A ⊂ Ek ⊂ M{A}, k = 1, 2,
+so that, in view of minimality of M{A},
+M{A} = E1 = E2.
+To finish off, let
+E3 = {B ∈ M{A} : B ∪ C ∈ M{A} for all C ∈ M{A}}.
+Looking at E1 = M{A} from another angle, we have shown that for every B ∈ M{A}
+we know that if C ∈ A, then B ∪ C ∈ M{A}, which means that
+A ⊂ E3.
+Moreover, E3 is a monotone class via (2.3), so that, by minimality again, we must
+have M{A} = E3.
+We have thus shown that M{A} obeys properties (a) and (b). 
+By suppressing the minimality of the monotone class, the following corollary
+emerges (because an arbitrary monotone class contains the minimal one).
+Corollary 2.1 If A is an algebra and G a monotone class containing A, then
+G ⊃ σ{A}.
+A related theorem, the monotone class theorem, concerns the equality between the
+Dynkin system and the σ-algebra generated by the same π-system.
+Theorem 2.3 (The monotone class theorem)
+If A is a π-system on Ω, then
+D{A} = σ{A}.
+Proof The proof runs along the same lines as the previous one. Namely, one first
+observes that D{A} ⊂ σ{A}, since every σ-algebra is a Dynkin system (Theorem
+2.1) and D{A} is the minimal Dynkin system containing A
+
+For the converse we must show that D{A} is a π-system (Theorem 2.1). In order
+to achieve this, let
+DC = {B ⊂ Ω : B ∩ C ∈ D{A}} for C ∈ D{A}.
+We claim that DC is a Dynkin system.
+To prove this we check the requirements for a collection of sets to constitute a
+Dynkin system. In this case we use the following alternative (recall Remark 2.2),
+namely, we show that Ω ∈ DC , and that (a) and (f) hold.
+Let C ∈ D{A}.
+• Since Ω ∩ C = C, it follows that Ω ∈ DC .
+• If B ∈ DC , then
+Bc ∩ C = (Ω  B) ∩ C = (Ω ∩ C)  (B ∩ C),
+which shows that Bc ∈ DC .
+• Finally, if {Bn, n ≥ 1} are disjoint sets in DC , then
+( ∞⋃
+n=1
+Bn
+)
+∩ C =
+∞⋃
+n=1
+(Bn ∩ C),
+which proves that ⋃∞
+n=1 Bn ∈ DC .
+The requirements for DC to be a Dynkin system are thus fulfilled. And since C
+was arbitrarily chosen this is true for any C ∈ D{A}.
+Now, since, by definition, A ⊂ DA for every A ∈ A, it follows that
+D{A} ⊂ DA for every A ∈ A.
+For C ∈ D{A} we now have C ∩ A ∈ D{A} for every A ∈ A, which implies that
+A ⊂ DC , and, hence, that D{A} ⊂ DC for every C ∈ D{A}. Consequently,
+B, C ∈ D{A} =⇒ B ∩ C ∈ D{A},
+that is, D{A} is a π-system. 
+By combining Theorems 2.2 and 2.3 (and the exercise preceding the former) the
+following result emerges.
+Corollary 2.2 If A is a σ-algebra, then
+M{A} = D{A} = σ{A} = A.
+2.4 A Metatheorem and Some Consequences
+A frequent proof technique is to establish some kind of reduction from an infinite
+setting to a finite one; simple functions, rectangles, and so on. Such proofs can often
+be identified in that they open by statements such as
+“it suffices to check rectangles”,
+“it suffices to check step functions”.
+
+The basic idea behind such statements is that there either exists some approxima-
+tion theorem that “takes care of the rest”, or that some convenient part of Theorem
+2.1 can be exploited for the remaining part of the proof. Our next result puts this
+device into a more stringent form, although in a somewhat metaphoric sense.
+Theorem 2.4 (A Metatheorem)
+(i) Suppose that some property holds for some monotone class E of subsets. If A is
+an algebra that generates the σ-algebra G and A ⊂ E, then E ⊃ G.
+(ii) Suppose that some property holds for some Dynkin system E of subsets. If A is
+a π-system that generates the σ-algebra G and A ⊂ E, then E ⊃ G.
+Proof Let
+E = {E : the property is satisfied}.
+(i): It follows from the assumptions and Theorem 2.2, respectively, that
+E ⊃ M{A} = σ{A} = G.
+(ii): Apply Theorem 2.3 to obtain
+E ⊃ D{A} = σ{A} = G. 
+Remark 2.5 As the reader may have discovered, the proofs of Theorems 2.2 and 2.3
+are of this kind.
+Remark 2.6 The second half of the theorem is called Dynkin’s π-λ theorem. 
+3 The Probability Space
+We now have sufficient mathematics at our disposal for a formal definition of the
+probability space or probability triple, (Ω, F, P).
+Definition 3.1 The triple (Ω, F, P) is a probability (measure) space if
+• Ω is the sample space , that is, some (possibly abstract) set;
+• F is a σ-algebra of sets (events)—the measurable subsets of Ω.
+The “atoms”, {ω}, of Ω, are called elementary events ;
+• P is a probability measure,
+that is, P satisfies the following Kolmogorov axioms :
+1. For any A ∈ F, there exists a number P(A) ≥ 0; the probability of A.
+2. P(Ω) = 1.
+3. Let {An, n ≥ 1} be disjoint. Then
+P(
+∞⋃
+n=1
+An) =
+∞∑
+n=1
+P(An).
+
+Remark 3.1 Axiom 3 is called countable additivity (in contrast to finite additivity).
+
+Departing from the axioms (only!) one can now derive various relations between
+probabilities of unions, subsets, complements and so on. Following is a list of some
+of them:
+Let A, A1, A2, . . . be measurable sets. Then
+• P(Ac) = 1 − P(A);
+• P(∅) = 0;
+• P(A1 ∪ A2) ≤ P(A1) + P(A2);
+• A1 ⊂ A2 =⇒ P(A1) ≤ P(A2);
+• P(⋃n
+k=1 Ak) + P(⋂n
+k=1 Ac
+k) = 1.
+Exercise 3.1 Prove these relations. 
+Remark 3.2 There exist non-empty sets which have probability 0. 
+From now on we assume, unless otherwise stated, that all sets are measurable.
+3.1 Limits and Completeness
+One of the basic questions in mathematics is to what extent limits of objects carry
+over to limits of functions of objects. In the present context the question amounts to
+whether or not probabilities of converging sets converge.
+Theorem 3.1 Suppose that A and {An, n ≥ 1} are subsets of Ω, such that An ↗ A
+(An ↘ A) as n → ∞. Then
+P(An) ↗ P(A) ( P(An) ↘ P(A) ) as n → ∞.
+Proof Suppose that An ↗ A, let B1 = A1 and set Bn = An ∩ Ac
+n−1, n ≥ 2. Then
+{Bn, n ≥ 1} are disjoint sets, and
+An =
+n⋃
+k=1
+Bk for all n ≥ 1, and
+∞⋃
+n=1
+An =
+∞⋃
+n=1
+Bn,
+so that by Proposition 2.1 (and σ-additivity)
+P(An) =
+n∑
+k=1
+P(Bk) ↗
+∞∑
+k=1
+P(Bk) = P
+( ∞⋃
+k=1
+Bk
+)
+= P
+( ∞⋃
+k=1
+Ak
+)
+= P(A).
+The case An ↘ A follows similarly, or, alternatively, by considering complements
+(since Ac
+n ↗ Ac as n → ∞). 
+A slight extension of this result yields the following one.
+
+Theorem 3.2 Let A and {An, n ≥ 1} be subsets of Ω, and set, as before, A∗ =
+lim inf n→∞ An, and A∗ = lim supn→∞ An. Then
+(i) P(A∗) ≤ lim inf n→∞ P(An) ≤ lim supn→∞ P(An) ≤ P(A∗);
+(ii) An → A as n → ∞ =⇒ P(An) → P(A) as n → ∞.
+Proof (i): By definition, for any n, we obtain, recalling Proposition 2.1, that
+A∗ ↖
+∞⋂
+m=n
+Am ⊂ An ⊂
+∞⋃
+m=n
+Am ↘ A∗,
+where the limits are taken as n → ∞. Joining this with Theorem 3.1, yields
+P(A∗) ≤ lim inf
+n→∞ P(An) ≤ lim sup
+n→∞
+P(An) ≤ P(A∗),
+which proves (i), from which (ii) is immediate, since the extreme members coincide
+under the additional assumption of set convergence. 
+As a corollary we obtain the following intuitively reasonable result.
+Corollary 3.1 Suppose that An → ∅ as n → ∞. Then
+P(An) → 0 as n → ∞.
+Proof Immediate from the previous theorem with A = ∅. 
+To prepare for the next two results we introduce the notion of a null set.
+Definition 3.2 A set A is a null set if there exists B ∈ F, such that B ⊃ A with
+P(B) = 0. 
+In normal prose this means that a set is a null set if it is contained in a measurable set
+which has probability 0. In particular, null sets need not be measurable. The concept
+of completeness takes care of that problem.
+Definition 3.3 A probability space (Ω, F, P) is complete if every null set is mea-
+surable, that is, if
+A ⊂ B ∈ F, P(B) = 0 =⇒ A ∈ F, (and, hence, P(A) = 0). 
+One can show that it is always possible to enlarge a given σ-algebra, and extend the
+given probability measure to make the, thus, extended probability space complete;
+one completes the probability space. It is therefore no restriction really to assume
+from the outset that a given probability space is complete. In order to avoid being
+distracted from the main path, we assume from now on, without further explicit
+mentioning, that all probability spaces are complete. Completeness is important in
+the theory of stochastic processes and for stochastic integration.
+We close this subsection by showing that the union of a countable number of
+null sets remains a null set, and that the intersection of countably many sets with
+probability 1 also has probability 1. The meaning of the latter is that peeling off
+sets of probability 0 countably many times still does not reduce the intersection with
+more than a null set.
+
+Theorem 3.3 Suppose that {An, n ≥ 1} are subsets of Ω with P(An) = 0 for
+all n. Then
+P
+( ∞⋃
+n=1
+An
+)
+= 0.
+Proof By σ-sub-additivity,
+P
+( ∞⋃
+n=1
+An
+)
+≤
+∞∑
+n=1
+P(An) = 0. 
+Theorem 3.4 Suppose that {Bn, n ≥ 1} are subsets of Ω with P(Bn) = 1 for
+all n. Then
+P
+( ∞⋂
+n=1
+Bn
+)
+= 1.
+Proof Using the de Morgan formulas (2.1) and Theorem 3.3,
+P
+( ∞⋂
+n=1
+Bn
+)
+= 1 − P
+( ∞⋃
+n=1
+Bc
+n
+)
+= 1. 
+Having defined the probability space, we now prove, as a first result, that for two
+probability measures to coincide it suffices that they agree on a suitable generator.
+The proof is a nice illustration of the Metatheorem, Theorem 2.4.
+Theorem 3.5 Suppose that P and Q are probability measures defined on the same
+probability space (Ω, F), and that F is generated by a π-system A. If P(A) = Q(A)
+for all A ∈ A, then P = Q, i.e., P(A) = Q(A) for all A ∈ F.
+Proof Define
+E = {A ∈ F : P(A) = Q(A)}.
+Since
+• Ω ∈ E,
+• A, B ∈ E, A ⊂ B =⇒ B  A ∈ E,
+• An ∈ E, n ≥ 1, An ↗ =⇒ ⋃
+n An ∈ E,
+where we used Theorem 3.1 in the final step, it follows that E is a Dynkin system.
+An application of Theorem 2.4 finishes the proof. 
+3.2 An Approximation Lemma
+The following result states that any set in a σ-algebra can be arbitrary well approx-
+imated by another set that belongs to an algebra that generates the σ-algebra. The
+need for this result is the fact that the infinite union of σ-algebras is not necessarily
+a σ-algebra (recall Theorem 2.1.10).
+The general description of the result reveals that it reduces an infinite setting to a
+finite one, which suggests that the proof builds on the metatheorem technique
+
+Lemma 3.1 Suppose that F0 is an algebra that generates the σ-algebra F, that is,
+F = σ{F0}. For any set A ∈ F and any ε > 0 there exists a set Aε ∈ F0, such that
+P(A  Aε) < ε.
+Proof Let ε > 0, and define
+G = {A ∈ F : P(A  Aε) < ε for some Aε ∈ F0}.
+(i): If A ∈ G, then Ac ∈ G, since Ac  (Aε)c = A  Aε.
+(ii): If An ∈ G, n ≥ 1, then so does the union. Namely, set A = ⋃∞
+n=1 An, let ε be
+given and choose n∗, such that
+P
+(
+A \
+n∗⋃
+k=1
+Ak
+)
+< ε. (3.1)
+Next, let {Ak,ε ∈ F0, 1 ≤ k ≤ n∗} be such that
+P(Ak  Ak,ε) < ε for 1 ≤ k ≤ n∗. (3.2)
+Since ( n∗⋃
+k=1
+Ak
+)
+
+( n∗⋃
+k=1
+Ak,ε
+)
+⊂
+n∗⋃
+k=1
+(Ak  Ak,ε),
+it follows that
+P
+(( n∗⋃
+k=1
+Ak
+)
+
+( n∗⋃
+k=1
+Ak,ε
+))
+≤
+n∗∑
+k=1
+P(Ak  Ak,ε) < n∗ε,
+so that, finally,
+P
+(
+A 
+( n∗⋃
+k=1
+Ak,ε
+))
+< (n∗ + 1)ε.
+This proves the second claim—the claim would have followed with an approximation
+error ε instead of (n∗ + 1)ε if we had chosen ε to be ε/2 in (3.1) and as ε/(2n∗) in
+(3.2). But that’s cheating.
+To summarize: G is non-empty, since G ⊃ F0 by construction (choose Aε = A
+whenever A ∈ F0), and G obeys properties (a) and (e), so that G is a σ-algebra.
+Moreover, G ⊃ F, since F is the minimal σ-algebra containing F0, and, since,
+trivially, G ⊂ F, it finally follows that G = F. 
+3.3 The Borel Sets on R
+Definition 3.4 A set Ω together with an associated σ-algebra, A, i.e., the pair
+(Ω, A), is called a measurable space.
+
+In this subsection we shall find out what the terminology we have introduced above
+means for Ω = R, and characterize R, the σ-algebra of Borel sets on the real line.
+A set F is open if, for every point x ∈ F, there exists an ε-ball, B(x, ε) ⊂ F.
+This means that the boundary points do not belong to the set; ∂ F  ⊂ F. A set G is
+closed if its complement Gc is open. If G is closed, then ∂G ⊂ G.
+The sets in R are called Borel sets, and the space (R, R) is called the Borel space.
+The σ-algebra of Borel sets, or the Borel-σ-algebra, is defined as the σ-algebra
+generated by the open subsets of R;
+R = σ{F : F is open}. (3.3)
+An important fact is that the Borel sets can, equivalently, be generated by intervals
+as follows.
+Theorem 3.6 We have
+R = σ{(a, b], −∞ ≤ a ≤ b < ∞}
+= σ{[a, b), −∞ < a ≤ b ≤ ∞}
+= σ{(a, b), −∞ ≤ a ≤ b ≤ ∞}
+= σ{[a, b], −∞ < a ≤ b < ∞}
+= σ{(−∞, b], −∞ < b < ∞}.
+Proof We confine ourselves by providing a sketch. The equivalences build on rela-
+tions such as
+(a, b) =
+∞⋃
+n=1
+(
+a, b − 1
+n
+]
+and (a, b] =
+∞⋂
+n=1
+(
+a, b + 1
+n
+)
+,
+and so on, or, more generally, by choosing a sequence {xn, n ≥ 1}, such that, if
+xn ↓ 0 as n → ∞, then
+(a, b) =
+∞⋃
+n=1
+(a, b − xn] and (a, b] =
+∞⋂
+n=1
+(a, b + xn) .
+Once these relations have been established one shows that a given σ-algebra is
+contained in another one and vice versa (which proves that they coincide), after
+which one of them is proven to be equivalent to (3.3). We leave the (boring?) details
+to the reader. 
+For probability measures on the real line Theorem 3.5 becomes
+Theorem 3.7 Suppose that P and Q are probability measures on (R, R) that agree
+on all intervals (a, b], −∞ ≤ a ≤ b < ∞, say. Then P = Q.
+Proof The collection of intervals constitutes a π-system, that generates R. 
+
+
+Remark 3.3 The theorem obviously remains true for all kinds of intervals mentioned
+in Theorem 3.6. 
+The statement of Theorem 3.7 amounts to the fact that, if we know a probability
+measure on all intervals (of one kind) we know it on any Borel set. Knowledge on
+the intervals thus determines the measure. The intervals are said to form a determining
+class.
+For comparison with higher dimensions we interpret intervals as one-dimensional
+rectangles.
+3.4 The Borel Sets on Rn
+For Borel sets in higher (finite) dimensions one extends Theorem 3.6 to higher-
+dimensional rectangles. The extension of Theorem 3.7 tells us that two probability
+measures on (Rn, Rn) agree if and only if they agree on rectangles.
+In infinite dimensions things become much harder. Existence follows from the
+famous Kolmogorov extension theorem. Moreover, by using the metatheorem tech-
+nique one can show that if the finite-dimensional distributions of two probability
+measures agree, then the measures agree. The finite-dimensional distributions con-
+stitute a determining class. We omit all details.
+4 Independence; Conditional Probabilities
+One of the most central concepts of probability theory is independence, which means
+that successive experiments do not influence each other, that the future does not
+depend on the past, that knowledge of the outcomes so far does not provide any
+information about future experiments.
+Definition 4.1 The events {Ak, 1 ≤ k ≤ n} are independent iff
+P
+( ⋂ Aik
+)
+= ∏ P(Aik ),
+where intersections and products, respectively, are to be taken over all subsets of
+{1, 2, . . . , n}.
+The events {An, n ≥ 1} are independent if {Ak, 1 ≤ k ≤ n} are independent for
+all n. 
+Exercise 4.1 How many equations does one have to check in order to establish that
+{Ak, 1 ≤ k ≤ n} are independent? 
+The classical examples are coin-tossing and throwing dice where successive out-
+comes are independent, and sampling without replacement from a finite population,
+where this is not the case, the typical example being drawing cards from a card deck
+
+Exercise 4.2 Prove that, if A and B are independent, then so are A and Bc, Ac and
+B, and Ac and Bc. 
+A suggestive way to illustrate independence is to introduce conditional probabilities.
+Definition 4.2 Let A and B be two events, and suppose that P(A) > 0. The condi-
+tional probability of B given A is defined as
+P(B | A) = P(A ∩ B)
+P(A) . 
+The conditional probability thus measures the probability of B given that we know
+that A has occurred. The numerator is the probability that both of them occur, and
+the denominator rescales this number in order for conditional probabilities to satisfy
+the Kolmogorov axioms.
+Exercise 4.3 Prove that, given A with P(A) > 0, P( · | A) satisfies the Kolmogorov
+axioms, and, hence, is a bona fide probability measure. 
+If, in particular, A and B are independent, then
+P(B | A) = P(A) · P(B)
+P(A) = P(B),
+which means that knowing that A has occurred does not change the probability of B
+occurring. As expected.
+Remark 4.1 It is also possible to begin by defining conditional probabilities, after
+which one “discovers” that for events satisfying P(A ∩ B) = P(A) · P(B) one has
+P(B | A) = P(B), which implies that for such events, the fact that A has occurred
+does not change the probability of B occurring, after which one introduces the notion
+of independence. In order to take care of sets with measure 0 one observes that
+0 ≤ P(A ∩ B) ≤ P(A) = 0,
+i.e., null sets are independent of everything.
+Note, in particular, that a null set is independent of itself. 
+4.1 The Law of Total Probability; Bayes’ Formula
+Having introduced conditional probabilities, the following facts are just around the
+corner.
+Definition 4.3 A partition of Ω is a collection of disjoint sets, the union of which
+equals Ω. Technically, {Hk, 1 ≤ k ≤ n} is a partition of Ω if
+Ω =
+n⋃
+k=1
+Hk, where Hi ∩ H j = ∅ for 1 ≤ i, j ≤ n, i  = j. 
+
+roposition 4.1 (The law of total probability)
+Let {Hk, 1 ≤ k ≤ n} be a partition of Ω. Then, for any event A ⊂ Ω,
+P(A) =
+n∑
+k=1
+P(A | Hk) · P(Hk).
+Proposition 4.2 (Bayes’ formula)
+Let {Hk, 1 ≤ k ≤ n} be a partition of Ω. Then, for any event A ⊂ Ω, such that
+P(A) > 0,
+P(Hk | A) = P(A | Hk) · P(Hk)
+P(A) = P(A | Hk) · P(Hk)
+∑n
+i=1 P(A | Hi ) · P(Hi ) .
+Exercise 4.4 Prove these two results. 
+4.2 Independence of Collections of Events
+Next we extend the definition of independence to independence between collections,
+in particular σ-algebras, of events.
+Definition 4.4 Let {Ak} be a finite or infinite collection. The collections are inde-
+pendent iff, for any k ∈ N, and non-empty subset of indices i1, i2, . . . , ik, the events
+{Ai j ∈ Ai j , j = 1, 2, . . . , k} are independent. 
+Remark 4.2 It follows from the definition that:
+• If every collection of events contains exactly one event, the definition reduces to
+Definition 4.1.
+• An infinite collection of events is independent if and only if every finite sub-
+collection is independent.
+• Every sub-collection of independent events is independent.
+• Disjoint sub-collections of independent events are independent. 
+Exercise 4.5 Check the statements of the remark. 
+From the metatheorem and some of its consequences we already know that it fre-
+quently suffices to “check rectangles”, which, more stringently speaking, amounts
+to the fact that it suffices to check some generator. This is also true for independence.
+Theorem 4.1 (i) If {An, n ≥ 1} are independent non-empty collections of events,
+then so are {D{An
+}, n ≥ 1}, the Dynkin systems generated by {An, n ≥ 1}.
+(ii) If, in addition, {An, n ≥ 1} are π-systems, then {σ{An
+}, n ≥ 1}, the σ-algebras
+generated by {An, n ≥ 1}, are independent. 
+Proof Since, as was noticed before, an infinite collection is independent if and only
+if every finite subcollection is independent, it is no restriction to depart from a finite
+collection {Ak, 1 ≤ k ≤ n}. Moreover, once the result is established for n = 2, the
+general case follows by induction.
+
+i): Let n = 2, and define
+EC = {B ∈ D{A1} : P(B ∩ C) = P(B) · P(C)} for C ∈ A2.
+We claim that EC is a Dynkin system for every C ∈ A2.
+To see this we argue as in the proof of Theorem 2.3:
+Let C ∈ A2.
+• Since P(Ω ∩ C) = P(C) = P(Ω) · P(C), we have Ω ∈ EC .
+• For B ∈ EC , we have Bc ∈ EC , since
+P(Bc ∩ C) = P((Ω  B) ∩ C) = P((Ω ∩ C)  (B ∩ C))
+= P(C  (B ∩ C)) = P(C) − P(B ∩ C)
+= P(C) − P(B)P(C) = (1 − P(B))P(C)
+= P(Bc) · P(C).
+• If Bn ∈ EC , n ≥ 1, are disjoint sets, then ⋃∞
+n=1 Bn ∈ EC , because
+P
+(( ∞⋃
+n=1
+Bn
+)
+∩ C
+)
+= P
+( ∞⋃
+n=1
+(Bn ∩ C)
+)
+=
+∞∑
+n=1
+P(Bn ∩ C)
+=
+∞∑
+n=1
+P(Bn) · P(C) = P
+( ∞⋃
+n=1
+Bn
+)
+· P(C).
+This concludes the proof of the fact that EC is a Dynkin system for every C ∈ A2.
+Next, since A1 ⊂ EC for every C ∈ A2, it follows that, D{A1} ⊂ EC for every
+C ∈ A2, which, by definition, means that D{A1} and A2 are independent.
+Repeating the same arguments with
+FC = {B ∈ D{A2} : P(B ∩ C) = P(B) · P(C)} for C ∈ D{A1},
+that is, with D{A2} and D{A1} playing the roles of D{A1} and A2, respectively,
+shows that D{A1} and D{A2} are independent as desired.
+This completes the proof of the first part of the theorem.
+(ii): The second half is immediate from the first part and Theorem 2.3, according to
+which the σ-algebras and Dynkin systems coincide because of the assumption that
+{An, n ≥ 1} are π-systems. 
+4.3 Pair-wise Independence
+This is an independence concept which is slightly weaker than independence as
+defined in Definition 4.1.
+Definition 4.5 The events {Ak, 1 ≤ k ≤ n} are pair-wise independent iff
+P(Ai ∩ A j ) = P(Ai ) · P(A j ) for all 1 ≤ i  = j ≤ n.
+
+Exercise 4.6 How many equations does one have to check? 
+Having defined pair-wise independence, the obvious request at this point would be an
+example which shows that this is something different from independence as defined
+earlier.
+Example 4.1 Pick one of the four points (1, 0, 0), (0, 1, 0), (0, 0, 1), and (1, 1, 1) at
+random, that is, with probability 1/4 each, and let
+Ak = {the k th coordinate equals 1}, k = 1, 2, 3.
+An easy calculation shows that
+P(Ak) = 1
+2 for k = 1, 2, 3,
+P(Ai ∩ A j ) = 1
+4 for i, j = 1, 2, 3, i  = j,
+P(Ai )P(A j ) = 1
+4 for i, j = 1, 2, 3, i  = j,
+P(A1 ∩ A2 ∩ A3) = 1
+4 ,
+P(A1)P(A2)P(A3) = 1
+8 .
+The sets A1, A2, A3 are thus pair-wise independent, but not independent. 
+5 The Kolmogorov Zero–one Law
+One magic result in probability theory concerns situations in which the probability
+of an event can only be 0 or 1. Theorems that provide criteria for such situations
+are called zero–one laws. We shall encounter one such result here, another one in
+Sec. 2.18, and then reprove the first one in Chap. 10.
+In order to state the theorem we need to define the σ-algebra that contains infor-
+mation about “what happens at infinity”.
+Let {An, n ≥ 1} be arbitrary events and, set
+An = σ{A1, A2, . . . , An} for n ≥ 1,
+A′
+n = σ{An+1, An+2, . . .} for n ≥ 0.
+Definition 5.1 The tail-σ-field is defined as
+T =
+∞⋂
+n=0
+A′
+n. 
+Remark 5.1 Since T is defined as an intersection of σ-algebras it is, indeed, itself a
+
+If we think of n as time, then A′
+n contains the information beyond time n and T
+contains the information “beyond time n for all n”, that is, loosely speaking, the
+information at infinity. Another name for the tail-σ-field is the σ-algebra of remote
+events.
+The famous Kolmogorov zero–one law states that if {An, n ≥ 1} are indepen-
+dent events, then the tail-σ-field is trivial, which means that it only contains sets of
+probability measure 0 or 1.
+Theorem 5.1 (The Kolmogorov zero–one law)
+Suppose that {An, n ≥ 1} are independent events. If A ∈ T , then
+P(A) = 0 or 1.
+There exist several proofs of this theorem. We shall provide one “proof” and one
+proof.
+“Proof” This is only a sketch which has to be rectified. The essential idea is that
+if A ∈ T , then A ∈ A′
+n for all n and, hence, is independent of An for all n. This
+implies, on the one hand, that
+A ∈ σ{A1, A2, A3, . . .}, (5.1)
+and, on the other hand, that
+A is independent of σ{A1, A2, A3, . . .}. (5.2)
+By combining the two conclusions it follows that A is independent of itself, which
+leads to the very special equation,
+P(A) = P(A ∩ A) = P(A) · P(A) = (P(A))2, (5.3)
+the solutions of which are P(A) = 0 and P(A) = 1. “”
+This is not completely stringent; the passages to infinity have to be performed
+with greater care, remember, for example, that the infinite union of σ-algebras need
+not be a σ-algebra.
+Proof Suppose that A ∈ T . This means that A ∈ A′
+n for every n, and, hence, that
+A and An are independent for every n.
+To turn the “proof” into a proof we need to rectify the transition to (5.2). This is
+achieved by the following slight elaboration of Lemma 3.1, namely, that there exists
+a sequence En ∈ An, such that
+P(En  A) → 0 as n → ∞ ,
+which tells us that
+P(En ∩ A) → P(A) as n → ∞, (5.4)
+P(En) → P(A) as n → ∞. (5.5)
+Moreover, since A ∈ A′
+n for all n, it follows that A is independent of every En, so
+that (5.4) can be rewritten a
+
+P(A) · P(En) → P(A) as n → ∞. (5.6)
+However, by (5.5) we also have
+P(A) · P(En) → (P(A))2 as n → ∞, (5.7)
+which, in view of (5.6), forces the equation P(A) = (P(A))2, and we rediscover
+(5.3). 
+Exercise 5.7 Write down the details of the elaboration of Lemma 3.1 that was used
+in the proof. 
+We shall return to Theorem 5.1 in Chap. 10 and provide another, very elegant,
+proof (which, admittedly, rests on a lot more background theory).
+6 Problems
+Throughout, A, B, {An, n ≥ 1}, and {Bn, n ≥ 1} are subsets of Ω.
+1. Show that
+A  B = (A ∩ Bc) ∪ (B ∩ Ac) = (A ∪ B)  (A ∩ B),
+Ac  Bc = A  B,
+{A1 ∪ A2}  {B1 ∪ B2} ⊂ {A1  B1} ∪ {A2  B2}.
+2. Which of the following statements are (not) true?
+lim sup
+n→∞
+{An ∪ Bn} = lim sup
+n→∞
+An ∪ lim sup
+n→∞
+Bn ;
+lim sup
+n→∞
+{An ∩ Bn} = lim sup
+n→∞
+An ∩ lim sup
+n→∞
+Bn ;
+lim inf
+n→∞ {An ∪ Bn} = lim inf
+n→∞ An ∪ lim inf
+n→∞ Bn ;
+lim inf
+n→∞ {An ∩ Bn} = lim inf
+n→∞ An ∩ lim inf
+n→∞ Bn ;
+An → A, Bn → B =⇒ An ∪ Bn → A ∪ B as n → ∞ ;
+An → A, Bn → B =⇒ An ∩ Bn → A ∩ B as n → ∞ .
+3. Let Ω = R, set Ik = [k − 1, k) for k ≥ 1, and let An = σ{Ik, k = 1, 2, . . . , n}.
+Show that ⋃∞
+n=1 An is not a σ-algebra.
+4. Suppose that the sets {Ak, 1 ≤ k ≤ n} are disjoint, and set Bk = ⋃k
+j=1 A j for
+k = 1, 2, . . . , n. Prove that
+σ{B1, B2, . . . , Bn} = σ{A1, A2, . . . , An}.
+5. Let {An, n ≥ 1} be a sequence of sets.
+
+(a) Suppose that P(An) → 1 as n → ∞. Prove that there exists a subsequence
+{nk, k ≥ 1}, such that
+P
+( ∞⋂
+k=1
+Ank
+)
+> 0.
+(b) Show that this is not true if we only assume that
+P(An) ≥ α for all n. (6.1)
+(c) Show that, if An, n ≥ 1, are non-increasing and such that (6.1) holds for
+some α ∈ (0, 1), then
+P
+( ∞⋂
+n=1
+An
+)
+≥ α.
+(d) Show that, if An, n ≥ 1, are non-decreasing and
+P(An) ≤ α for all n
+for some α ∈ (0, 1), then
+P
+( ∞⋃
+n=1
+An
+)
+≤ α.
+6. Show that
+I {A ∪ B} = max{I {A}, I {B}} = I {A} + I {B} − I {A} · I {B} ;
+I {A ∩ B} = min{I {A}, I {B}} = I {A} · I {B} ;
+I {A  B} = I {A} + I {B} − 2I {A} · I {B} = (I {A} − I {B})2 .
+7. Show that
+An → A as n → ∞ ⇐⇒ I {An} → I {A} as n → ∞.
+8. Let, for n ≥ 1, 0 ≤ an ↗ 1, and 1 < bn ↘ 1 as n → ∞. Show that
+sup
+n
+[0, an) = [0, 1) and/but sup
+n
+[0, an]  = [0, 1] ;
+inf
+n [0, bn] = [0, 1] and inf
+n [0, bn) = [0, 1] .
+9. The Bonferroni inequalities. Show that
+P
+( n⋃
+k=1
+Ak
+)
+≤
+n∑
+k=1
+P(Ak) ;
+P
+( n⋃
+k=1
+Ak
+)
+≥
+n∑
+k=1
+P(Ak) − ∑
+1≤i< j≤n
+P(Ai ∩ A j ) ;
+P
+( n⋃
+k=1
+Ak
+)
+≤
+n∑
+k=1
+P(Ak) − ∑
+1≤i< j≤n
+P(Ai ∩ A j )
++ ∑
+1≤i< j<k≤n
+P(Ai ∩ A j ∩ Ak)
+
+10. The inclusion-exclusion formula. Show that
+P
+( n⋃
+k=1
+Ak
+)
+=
+n∑
+k=1
+P(Ak) − ∑
+1≤i< j≤n
+P(Ai ∩ A j )
++ ∑
+1≤i< j<k≤n
+P(Ai ∩ A j ∩ Ak)
++ · · · − (−1)n P(A1 ∩ A2 ∩ · · · ∩ An) .
+11. Suppose that the events {An, n ≥ 1} are independent. Show that the inclusion-
+exclusion formula reduces to
+P
+( n⋃
+k=1
+Ak
+)
+= 1 −
+n∏
+k=1
+(1 − P(Ak)).
+12. Show, in the setup of the previous problem, that
+P
+( n⋃
+k=1
+Ak
+)
+≥ 1 − exp
+{
+−
+n∑
+k=1
+P(Ak)
+}
+,
+∞∑
+n=1
+P(An) = ∞ =⇒ P
+( ∞⋃
+n=1
+An
+)
+= 1 .
+13. Let An, n ≥ 1, be Borel sets on the Lebesgue space ([0, 1], F(0, 1), λ). Show
+that, if there exists η > 0, such that λ(An) ≥ η for all n, then there exists at least
+one point that belongs to infinitely many sets An.
+14. At the end of a busy day n fathers arrive at kindergarten to pick up their kids.
+Each father picks a child to take home uniformly at random. Use the inclusion-
+exclusion formula to show that the probability that at least one father picks his
+own child equals
+1 − 1
+2! + 1
+3! − 1
+4! + · · · − (−1)n 1
+n! ,
+and that this probability tends to 1 − 1/e ≈ 0.6321 as n → ∞.
+♣ The mathematical formulation of this problem, which is called the rencontre problem
+or the matching problem, is that we seek the probability that a random permutation
+of the numbers 1, 2, . . . , n leaves at least one position unchanged. The traditional
+(outdated) formulation is that n men pick a hat at random from the hat rack when they
+leave a party, and one seeks the probability that at least one of them picks his own hat
+
+
