@@ -1,0 +1,209 @@
+C H A P T E R 2 Tkinter
+=======================
+
+* 2.1 The Tkinter module 12
+* 2.2 Mapping Tcl/Tk to Tkinter 14
+* 2.3 Win32 and Unix GUIs 15
+* 2.4 Tkinter class hierarchy 16
+* 2.5 Tkinter widget appearance 17
+
+This chapter describes the structure of the Tkinter module and its relationship to Tcl/Tk.
+The mapping with Tcl/Tk constructs to Tkinter is explained in order to assist Tcl/Tk pro-
+grammers in converting to Tkinter from Tcl/Tk. Native GUIs for UNIX, Win32 and Mac-
+intosh implementations will be discussed and key architectural differences will be
+highlighted. Font and color selection will be introduced, and I’ll cover this topic in more
+detail in “Tkinter widgets” on page 31. For readers who are unfamiliar with Tkinter, this
+chapter illustrates its importance to Python applications.
+
+*2.1 The Tkinter module*
+
+*2.1.1 What is Tkinter?*
+
+Tkinter provides Python applications with an easy-to-program user interface. Tkinter sup-
+ports a collection of Tk widgets that support most application needs. Tkinter is the Python
+interface to Tk, the GUI toolkit for Tcl/Tk. Tcl/Tk is the scripting and graphics facility
+developed by John Ousterhout, who was originally at University of California at Berkeley
+and later at Sun Microsystems. Currently, Tcl/Tk is developed and supported by the Scriptics
+Corporation, which Ousterhout founded. Tcl/Tk enjoys a significant following with develop-
+ers in a number of fields, predominantly on UNIX systems, but more recently on Win32 sys-
+tems and MacOS. Ousterhout’s Tcl and the Tk Toolkit, which was the first Tcl/Tk book, is
+still a viable, though old, reference document for Tcl/Tk. (You will find some excellent newer
+texts on the subject in the section “References” on page 625 ).
+
+Tcl/Tk was first designed to run under the X Window system and its widgets and win-
+dows were made to resemble Motif widgets. The behavior of bindings and controls was also
+designed to mimic Motif. In recent versions of Tcl/Tk (specifically, release 8.0 and after), the
+widgets resemble native widgets on the implemented architecture. In fact, many of the widgets
+are native widgets and the trend to add more of them will probably continue.
+
+Like Python extensions, Tcl/Tk is implemented as a C library package with modules to
+support interpreted scripts, or applications. The Tkinter interface is implemented as a Python
+module, Tkinter.py, which is bound to a C-extension (_tkinter) which utilizes these same
+Tcl/Tk libraries. In many cases a Tkinter programmer need not be concerned with the imple-
+mentation of Tcl/Tk since Tkinter can be viewed as a simple extension of Python.
+
+**2.1.2 What about performance?**
+
+At first glance, it is reasonable to assume that Tkinter is not going to perform well. After all,
+the Python interpreter is utilizing the Tkinter module which, in turn, relies on the _tkinter
+interface which calls Tcl and Tk libraries and sometimes calls the Tcl interpreter to bind
+properties to widgets. Well, this is all true, but on modern systems it really does not matter
+too much. If you follow the guidelines in “Programming for performance” on page 348, you
+will find that Python and Tkinter have the ability to deliver viable applications. If your reason
+for using Python/Tkinter is to develop prototypes for applications, then the point is some-
+what moot; you will develop prototypes quickly in Python/Tkinter.
+
+**2.1.3 How do I use Tkinter?**
+
+Tkinter comprises a number of components. _tkinter, as mentioned before, is the low level
+interface to the Tk libraries and is linked into Python. Until recently, it was the programmer’s
+responsibility to add Tkinter to the Python build, but beginning with release 1.5.2 of Python,
+Tkinter, Tcl and Tk are part of the installation package—at least for the Win32 distribution.
+For several UNIX variants and Macintosh, it is still necessary to build Python to include
+Tkinter. However, check to see if a binary version is available for your particular platform.
+
+Once a version of Python has been built and _tkinter has been included, as a shared
+library, dll or statically linked, the Tkinter module needs to be imported. This imports any
+other necessary modules, such as Tkconstants.
+
+To create a Tkinter window, type three lines into the Python com-
+mand line (or enter them into a file and type “python filename.py”).
+
+.. code:: Python
+
+   from Tkinter import Label, mainloop
+   Label(text=’This has to be the\nsimplest bit of code’).pack()
+   mainloop()
+
+**Code comments**
+
+* First, we import components from the Tkinter module. By using from module import
+Label, mainloop we avoid having to reference the module to access attributes and methods
+contained in the module.
+
+* We create a Label containing two lines of text and use the Pack geometry manager to realize
+the widget.
+
+* Finally, we call the Tkinter mainloop to process events and keep the display activated. This
+example does not react to any application-specific events, but we still need a mainloop for it
+to be displayed; basic window management is automatic.
+
+What you will see is shown in figure 2.1. Now, it really cannot get much simpler than
+that!
+
+**2.1.4 Tkinter features**
+
+Tkinter adds object-oriented interfaces to Tk. Tcl/Tk is a command-oriented scripting lan-
+guage so the normal method of driving Tk widgets is to apply an operation to a widget identi-
+fier. In Tkinter, the widget references are objects and we drive the widgets by using object
+methods and their attributes. As a result, Tkinter programs are easy to read and understand,
+especially for C++ or Java programmers (although that is entirely another story!).
+
+One important feature that Tk gives to any Tkinter application is that, with a little care
+in selecting fonts and other architecture-dependent features, it will run on numerous flavors
+of UNIX, Win32 and Macintosh without modification. Naturally, there are some intrinsic dif-
+ferences between these architectures, but Tkinter does a fine job of providing an architecture-
+independent graphics platform for applications.
+
+It is the object-oriented features, however, that really distinguish Tkinter as an ideal plat-
+form for developing application frameworks. You will see many examples in this book where
+relatively little code will support powerful applications.
+
+**2.2 Mapping Tcl/Tk to Tkinter**
+
+Mapping of Tcl/Tk commands and arguments to Tkinter is really quite a simple process.
+After writing Tkinter code for a short time, it should be easy for a Tcl/Tk programmer to
+make the shift—maybe he will never go back to Tcl/Tk! Let’s look at some examples.
+
+Commands in Tk map directly to class constructors in Tkinter.
+
+Txl/Tk 				Tkinter
+label .myLabel 			myLabel = Label(master)
+
+Parent widgets (usually referred to as master widgets) are explicit in Tkinter:
+
+For configuration options, Tk uses keyword arguments followed by values or configure
+commands; Tkinter uses either keyword arguments or a dictionary reference to the option of
+the configure method in the target widget.
+
+Since the Tkinter widget object has methods, you invoke them directly, adding argu-
+ments as appropriate.
+
+The following illustration demonstrates how we access an inherited method pack from the
+Packer. This style of programming contributes to the compact nature of Tkinter applications
+and their ease of maintenance and reuse.
+
+Full mappings of Tk to Tkinter are provided in “Mapping Tk to Tkinter” on page 383.
+
+**2.3 Win32 and UNIX GUIs**
+
+As I mentioned earlier, it is reasonable to develop Tkinter applications for use in Win32,
+UNIX and Macintosh environments. Tcl/Tk is portable and can be built on the specific plat-
+form, as can Python, with its _tkinter C module. Using Pmw* (Python MegaWidgets),
+which provides a portable set of composite widgets and is 100% Python code, it is possible to
+use the bytecode generated on a UNIX system on a Win32 or Macintosh system. What you
+cannot control is the use of fonts and, to a lesser extent, the color schemes imposed by the
+operating system.
+
+Take a look at figure 2.2. This
+application uses Pmw combobox widgets
+along with Tkinter button and entry
+widgets arranged within frames. The
+font for this example is Arial, bold and
+16 point. Apart from the obvious Win32
+controls in the border, there is little to
+distinguish this window from the one
+shown in figure 2.3, which was run on
+UNIX. In this case, the font is Helvetica,
+bold and 16 point. The window is
+slightly larger because the font has
+slightly different kerning rules and stroke
+weight, and since the size of the widget is
+dependent on the font, this results in a
+slightly different layout. If precise align-
+ment and sizing is an absolute require-
+ment, it is possible to detect the platform
+on which the application is running and
+make adjustments for known differ-
+ences. In general, it is better to design an
+application that is not sensitive to small
+changes in layout.
+
+If you look closely, you may also
+notice a difference in the top and bottom
+highlights for the Execute and Close but-
+tons, but not for the buttons on the Pmw
+widgets. This is because Tk is drawing
+Motif decorations for UNIX and Win-
+dows SDK decorations for Win32.
+
+In general, as long as your applica-
+tion does not make use of very platform-
+specific fonts, it will be possible to
+develop transportable code.
+
+**2.4 Tkinter class hierarchy**
+
+Unlike many windowing systems, the Tkinter hierarchy is really quite simple; in fact, there
+really isn’t a hierarchy at all. The WM, Misc, Pack, Place and Grid classes are mixins to each
+of the widget classes. Most programmers only need to know about the lowest level in the tree
+to perform everyday operations and it is often possible to ignore the higher levels. The
+notional “hierarchy” is shown in figure 2.4.
+
+**2.5 Tkinter widget appearance**
+
+To conclude this initial introduction
+to Tkinter, let’s take a quick look at
+the appearance of the widgets avail-
+able to a programmer. In this exam-
+ple, we are just looking at the basic
+configuration of the widgets and only
+one canvas drawing option is shown.
+I’ve changed the border on the frames
+to add some variety, but you are see-
+ing the widgets with their default
+appearance. The widgets are shown in
+figure 2.5. The code is not presented
+here, but it is available online.
+
+
