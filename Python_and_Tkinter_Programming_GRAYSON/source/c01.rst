@@ -65,10 +65,13 @@ paragraph are in for a surprise. Scattered through the examples you’ll find bi
 you have never experienced Monty Python, then I can only offer the following advice: if some-
 thing about the example looks weird, it’s probably Python. As my Yugoslavian college friend
 used to say “You find that funny”?
-1.1.1 Why Python?
+
+**1.1.1 Why Python?**
+
 Several key features make Python an ideal language for a wide range of applications. Adding
 Tkinter to the mix widens the possibilities dramatically. Here are some of the highlights that
 make Python what it is:
+
 • Automatic compile to bytecode
 • High-level data types and operations
 • Portability across architectures
@@ -79,15 +82,18 @@ make Python what it is:
 • Easy to extend in C and C++ and embed in applications
 • Large library of contributed applications and tools
 • Excellent documentation
+
 You might notice that I did not mention an interpreter explicitly. One feature of Python
 is that it is a bytecode engine written in C. The extension modules are written in C. With a
 little care in the way you design your code, most of your code will run using compiled C since
-many operations are built into the system. The remaining code will run in the bytecode engine
+many operations are built into the system. The remaining code will run in the bytecode engine.
 
 The result is a system that may be used as a scripting language to develop anything from some
 system administration scripts all the way to a complex GUI-based application (using database,
 client/server, CORBA or other techniques).
-1.1.2 Where can Python be used?
+
+**1.1.2 Where can Python be used?**
+
 Knowing where Python can be used is best understood by learning where it might not be the
 best choice. Regardless of what I just said about the bytecode engine, Python has an interpre-
 tive nature, so if you can’t keep within the C-extensions, there has to be a performance pen-
@@ -97,10 +103,13 @@ extensions to Python have been developed specifically for numerical programming 
 Python is not the best choice for huge computation-intensive applications unless time isn’t a
 factor. Similarly, graphics-intensive applications which involve real-time observation are not a
 good match (but see “Speed drawing” on page 271 for an example of what can be done).
-1.2 Key data types: lists, tuples and dictionaries
+
+**1.2 Key data types: lists, tuples and dictionaries**
+
 Three key data types give Python the power to produce effective applications: two sequence
 classes—lists and tuples—and a mapping class—dictionaries. When they are used together,
 they can deliver surprising power in a few lines of code.
+
 Lists and tuples have a lot in common. The major difference is that the elements of a list
 can be modified in place but a tuple is immutable: you have to deconstruct and then reconstruct
 a tuple to change individual elements. There are several good reasons why we should care about
@@ -108,214 +117,356 @@ this distinction; if you want to use a tuple as the key to a dictionary, it’s 
 can’t be changed arbitrarily. A small advantage of tuples is that they are a slightly cheaper
 resource since they do not carry the additional operations of a list.
 If you want an in-depth view of these data types take a look at chapters 6 and 8 of Quick Python.
-1.2.1 Lists
+
+**1.2.1 Lists**
+
 Let’s look at lists first. If you are new to Python, remember to look at the tutorial that is avail-
 able in the standard documentation, which is available at www.python.org.
-Initializing lists
+
+**Initializing lists**
+
 Lists are easy to create and use. To initialize a list:
-lst = [] # Empty list
-lst = ['a', 'b', 'c'] # String list
-lst = [1, 2, 3, 4] # Integer list
-lst = [[1,2,3], ['a','b','c']] # List of lists
-lst = [(1,'a'),(2,'b'),(3,'c')] # List of tuples
-Appending to lists
+
+.. code:: Python
+
+   lst = [] # Empty list
+   lst = ['a', 'b', 'c'] # String list
+   lst = [1, 2, 3, 4] # Integer list
+   lst = [[1,2,3], ['a','b','c']] # List of lists
+   lst = [(1,'a'),(2,'b'),(3,'c')] # List of tuples
+
+**Appending to lists**
+
 Lists have an append method built in:
-lst.append('e')
-lst.append((5,'e'))
 
-oncatenating lists
+.. code:: Python
+
+   lst.append('e')
+   lst.append((5,'e'))
+
+**oncatenating lists**
+
 Combining lists works well:
-lst = [1, 2, 3] + [4, 5, 6]
-print lst
-[1, 2, 3, 4, 5, 6]
-Iterating through members
-Iterating through a list is easy:
-lst = ['first', 'second', 'third']
-for str in lst:
-print 'this entry is %s' % str
-set = [(1, 'uno'), (2, 'due'), (3, 'tres')]
-for integer, str in set:
-print 'Numero "%d" in Italiano: è "%s"' % (integer, str)
-Sorting and reversing
-Lists have built-in sort and reverse methods:
-lst = [4, 5, 1, 9, 2]
-lst.sort()
-print lst
-[1, 2, 4, 5, 9]
-lst.reverse()
-print lst
-[9, 5, 4, 2, 1]
-Indexing
-Finding an entry in a list:
-lst = [1, 2, 4, 5, 9]
-print lst.index(5)
-3
-Member
-Checking membership of a list is convenient:
-if 'jeg' in ['abc', 'tuv', 'kie', 'jeg']:
-...
-if '*' in '123*abc':
-...
-Modifying members
-A list member may be modified in place:
-lst = [1, 2, 4, 5, 9]
-lst[3] = 10
-print lst
-[1, 2, 4, 10, 9]
 
-nserting and deleting members
+.. code:: Python
+
+   lst = [1, 2, 3] + [4, 5, 6]
+   print lst
+   [1, 2, 3, 4, 5, 6]
+
+**Iterating through members**
+
+Iterating through a list is easy:
+
+.. code:: Python
+
+   lst = ['first', 'second', 'third']
+   for str in lst:
+   print 'this entry is %s' % str
+      set = [(1, 'uno'), (2, 'due'), (3, 'tres')]
+
+   for integer, str in set:
+      print 'Numero "%d" in Italiano: è "%s"' % (integer, str)
+
+**Sorting and reversing**
+
+Lists have built-in sort and reverse methods:
+
+.. code:: Python
+
+   lst = [4, 5, 1, 9, 2]
+   lst.sort()
+   print lst
+   [1, 2, 4, 5, 9]
+   
+   lst.reverse()
+   print lst
+   [9, 5, 4, 2, 1]
+
+**Indexing**
+
+Finding an entry in a list:
+
+.. code:: Python
+   
+   lst = [1, 2, 4, 5, 9]
+   print lst.index(5)
+   3
+
+**Member**
+
+Checking membership of a list is convenient:
+
+.. code:: Python
+
+   if 'jeg' in ['abc', 'tuv', 'kie', 'jeg']:
+   ...
+   if '*' in '123*abc':
+   ...
+
+**Modifying members**
+
+A list member may be modified in place:
+
+.. code:: Python
+
+   lst = [1, 2, 4, 5, 9]
+   lst[3] = 10
+   print lst
+   [1, 2, 4, 10, 9]
+
+**nserting and deleting members**
+
 To insert a member in a list:
-lst = [1, 2, 3, 4, 10, 9]
-lst.insert(4, 5)
-print lst
-[1, 2, 3, 4, 5, 10, 9]
+
+.. code:: Python
+
+   lst = [1, 2, 3, 4, 10, 9]
+   lst.insert(4, 5)
+   print lst
+   [1, 2, 3, 4, 5, 10, 9]
+
 To delete a member:
-lst = [1, 2, 3, 4, 10, 9]
-del lst(4)
-print lst
-[1, 2, 3, 4, 9]
-1.2.2 Tuples
+
+.. code:: Python
+
+   lst = [1, 2, 3, 4, 10, 9]
+   del lst(4)
+   print lst
+   [1, 2, 3, 4, 9]
+
+**1.2.2 Tuples**
+
 Tuples are similar to lists but they are immutable (meaning they cannot be modified). Tuples
 are a convenient way of collecting data that may be passed as a single entity or stored in a list
 or dictionary; the entity is then unpacked when needed.
-Initializing tuples
+
+**Initializing tuples**
+
 With the exception of a tuple containing one element, tuples are initialized in a similar man-
 ner to lists (lists and tuples are really related sequence types and are readily interchangeable).
-tpl = () # Empty tuple
-tpl = (1,) # Singleton tuple
-tpl = ('a', 'b', 'c') # String tuple
-tpl = (1, 2, 3, 4) # Integer tuple
-tpl = ([1,2,3], ['a','b','c']) # Tuple of lists
-tpl = ((1,'a'),(2,'b'),(3,'c')) # Tuple of tuples
-Iterating through members
-for i in tpl:
-...
-for i,a in ((1, 'a'), (2, 'b'), (3, 'c')):
-...
-Modifying tuples
+
+.. code:: Python
+
+   tpl = () # Empty tuple
+   tpl = (1,) # Singleton tuple
+   tpl = ('a', 'b', 'c') # String tuple
+   tpl = (1, 2, 3, 4) # Integer tuple
+   tpl = ([1,2,3], ['a','b','c']) # Tuple of lists
+   tpl = ((1,'a'),(2,'b'),(3,'c')) # Tuple of tuples
+
+**Iterating through members**
+
+.. code:: Python
+
+   for i in tpl:
+   ...
+
+   for i,a in ((1, 'a'), (2, 'b'), (3, 'c')):
+   ...
+
+**Modifying tuples**
+
 (But you said tuples were immutable!)
-a = 1, 2, 3
-a = a[0], a[1], 10, a[2]
-a
-(1, 2, 10, 3)
+
+.. code:: Python
+
+   a = 1, 2, 3
+   a = a[0], a[1], 10, a[2]
+   a
+   (1, 2, 10, 3)
+
 Note that you are not modifying the original tuple but you are creating a new name bin
 
-.2.3 Dictionaries
+**1.2.3 Dictionaries**
+
 Dictionaries are arrays of data indexed by keys. I think that they give Python the edge in
 designing compact systems. If you use lists and tuples as data contained within
 dictionaries you have a powerful mix (not to say that mixing code objects, dictionaries and
 abstract objects isn’t powerful!).
-Initializing dictionaries
-Dictionaries may be initialized by providing key:value pairs:
-dict = {} # Empty dictionary
-dict = {'a'': 1, 'b': 2, 'c': 3} # String key
-dict = {1: 'a', 2: 'b', 3: 'c'} # Integer key
-dict = {1: [1,2,3], 2: [4,5,6]} # List data
-Modifying dictionaries
-Dictionaries are readily modifiable:
-dict['a'] = 10
-dict[10] = 'Larch'
-Accessing dictionaries
-Recent versions of Python facilitate lookups where the key may not exist. First, the old way:
-if dict.has_key('a'):
-value = dict['a']
-else:
-value = None
-or:
-try:
-value = dict['a']
-except KeyError:
-value = None
-This is the current method:
-value = dict.get('a', None)
-Iterating through entries
-Get the keys and then iterate through them:
-keys = dict.keys()
-for key in keys:
-...
-Sorting dictionaries
-Dictionaries have arbitrary order so you must sort the keys if you want to access the keys in order:
-keys = dict.keys().sort()
 
-1.3 Classes
+**Initializing dictionaries**
+
+Dictionaries may be initialized by providing key:value pairs:
+
+.. code:: Python
+
+   dict = {} # Empty dictionary
+   dict = {'a'': 1, 'b': 2, 'c': 3} # String key
+   dict = {1: 'a', 2: 'b', 3: 'c'} # Integer key
+   dict = {1: [1,2,3], 2: [4,5,6]} # List data
+
+**Modifying dictionaries**
+
+Dictionaries are readily modifiable:
+
+.. code:: Python
+
+   dict['a'] = 10
+   dict[10] = 'Larch'
+
+**Accessing dictionaries**
+
+Recent versions of Python facilitate lookups where the key may not exist. First, the old way:
+
+.. code:: Python
+
+   if dict.has_key('a'):
+      value = dict['a']
+   else:
+      value = None
+
+or:
+
+.. code:: Python
+
+   try:
+      value = dict['a']
+   except KeyError:
+      value = None
+
+This is the current method:
+
+.. code:: Python
+
+   value = dict.get('a', None)
+
+**Iterating through entries
+
+Get the keys and then iterate through them:
+
+.. code:: Python
+
+   keys = dict.keys()
+   for key in keys:
+   ...
+
+**Sorting dictionaries**
+
+Dictionaries have arbitrary order so you must sort the keys if you want to access the keys in order:
+
+.. code:: Python
+
+   keys = dict.keys().sort()
+   for key in keys:
+   ...
+
+**1.3 Classes**
+
 I’m including a short section on Python classes largely for C++ programmers who may need to
 learn some of the details of Python’s implementation and for Python programmers who have
 yet to discover OOP in Python.
-1.3.1 How do classes describe objects?
+
+**1.3.1 How do classes describe objects?**
+
 A class provides the following object descriptions:
+
 • The attributes (data-members) of the object
 • The behavior of the object (methods)
 • Where behavior is inherited from other classes (superclasses)
+
 Having said all that, C++ programmers will probably be tuning out at this point—but
 hold on for a little longer. There are some valuable features of Python classes, some of which
 may come as a bit of a surprise for someone who is not fully up to speed with Python OOP.
+
 Most of the examples of applications in this book rely heavily on building class libraries
 to create a wide range of objects. The classes typically create instances with multiple formats
 (see LEDs and Switches in chapter 7). Before we start building these objects, let’s review the
 rules and features that apply to Python classes.
-1.3.2 Defining classes
+
+**1.3.2 Defining classes**
+
 A Python class is a user-defined data type which is defined with a class statement:
-class AClass:
-statements
+
+.. code:: Python
+
+   class AClass:
+      statements
+
 Statements are any valid Python statements defining attributes and member functions. In
 fact, any Python statement can be used, including a pass statement, as we will see in the next
 section. Calling the class as a function creates an instance of the class:
-anInstanceOfAClass = AClass()
-1.3.3 Neat Python trick #10
+
+.. code:: Python
+
+   anInstanceOfAClass = AClass()
+
+**1.3.3 Neat Python trick #10**
+
 A class instance can be used like a C structure or Pascal record. However, unlike C and Pascal,
 the members of the structure do not need to be declared before they are used—they can be
 created dynamically. We can use this ability to access arbitrary data objects across modules;
 examples using class instances to support global data will be shown later.
-class DummyClass:
-pass
-Colors = DummyClass()
-Colors.alarm = 'red'
-Colors.warning = 'orange'
-Colors.normal = 'green'
-If the preceding lines are stored in a file called programdata.py, the following is a possible
-code sequenc
 
-from programdata import Colors
-...
-Button(parent, bg=Colors.alarm, text='Pressure\nVessel',
-command=evacuateBuilding)
+.. code:: Python
+
+   class DummyClass:
+      pass
+   Colors = DummyClass()
+   Colors.alarm = 'red'
+   Colors.warning = 'orange'
+   Colors.normal = 'green'
+
+If the preceding lines are stored in a file called programdata.py, the following is a possible
+code sequence.
+
+.. code:: Python
+
+   from programdata import Colors
+   ...
+   Button(parent, bg=Colors.alarm, text='Pressure\nVessel',
+      command=evacuateBuilding)
+
 Alternately, if you apply a little knowledge about how Python manages data internally,
 you can use the following construction.
-class Record:
-def __init__(self, **kw):
-self.__dict__.update(kw)
-Colors = Record(alarm='red', warning='orange', normal='green')
-1.3.4 Initializing an instance
+
+.. code:: Python
+
+   class Record:
+      def __init__(self, **kw):
+         self.__dict__.update(kw)
+   Colors = Record(alarm='red', warning='orange', normal='green')
+
+**1.3.4 Initializing an instance**
+
 Fields (instance variables) of an instance may be initialized by including an __init__
 method in the class body. This method is executed automatically when a new instance of the
 class is created. Python passes the instance as the first argument. It is a convention to name it
 self (it’s called this in C++). In addition, methods may be called to complete initialization.
 The __init__ methods of inherited classes may also be called, when necessary.
-class ASX200(Frame):
-def __init__(self, master=None):
-Frame.__init__(self, master)
-Pack.config(self)
-self.state = NORMAL
-self.set_hardware_data(FORE)
-self.createWidgets()
-...
-...
-switch = ASX200()
-I
+
+.. code:: Python
+
+   class ASX200(Frame):
+      def __init__(self, master=None):
+         Frame.__init__(self, master)
+         Pack.config(self)
+         self.state = NORMAL
+         self.set_hardware_data(FORE)
+         self.createWidgets()
+   ...
+   ...
+   switch = ASX200()
+
+
 To use instance variables you must reference the containing object (in the previ-
 ous example it is switch.state, not self.state). If you make a reference to
 a variable by itself, it is to a local variable within the executing function, not an instance
 variable.
-1.3.5 Methods
+
+**1.3.5 Methods**
+
 We have already encountered the __init__ method that is invoked when an instance is cre-
 ated. Other methods are defined similarly with def statements. Methods may take argu-
 ments: self is always the first or only argument.
+
 You will see plenty of examples of methods, so little discussion is really necessary. Note
 that Python accepts named arguments, in addition to positional arguments, in both methods
 and function calls. This can make supplying default values for methods very easy, since omis-
-sion of an argument will result in the default value being supplied. Take care when mixing posi
+sion of an argument will result in the default value being supplied. Take care when mixing positional and named arguments as it is very easy to introduce problems in class libraries this way.
 
-1.3.6 Private and public variables and methods
+**1.3.6 Private and public variables and methods**
+
 Unless you take special action, all variables and methods are public and virtual. If you make
 use of name mangling, however, you can emulate private variables and methods. You mangle
 the name this way: Any name which begins with a double-underscore (__) is private and is
@@ -323,28 +474,36 @@ not exported to a containing environment. Any name which begins with a single un
 (_) indicates private by convention, which is similar to protected in C++ or Java. In fact, Python
 usually is more intuitive than C++ or other languages, since it is immediately obvious if a ref-
 erence is being made to a private variable or method.
-1.3.7 Inheritance
+
+**1.3.7 Inheritance**
+
 The rules of inheritance in Python are really quite simple:
-• Classes inherit behavior from the classes specified in their header and from any classes
-above these classes.
-• Instances inherit behavior from the class from which they are created and from all the
-classes above this class.
+
+• Classes inherit behavior from the classes specified in their header and from any classes above these classes.
+• Instances inherit behavior from the class from which they are created and from all the classes above this class.
+
 When Python searches for a reference it searches in the immediate namespace (the
 instance) and then in each of the higher namespaces. The first occurrence of the reference is
 used; this means that a class can easily redefine attributes and methods of its superclasses. If
 the reference cannot be found Python reports an error.
+
 Note that inherited methods are not automatically called. To initialize the base class, a
 subclass must call the __init__ method explicitly.
-1.3.8 Multiple inheritance
+
+**1.3.8 Multiple inheritance**
+
 Multiple inheritance in Python is just an extension of inheritance. If more than one class is
 specified in a class’s header then we have multiple inheritance. Unlike C++, however, Python
 does not report errors if attributes of classes are multiple defined; the basic rule is that the first
 occurrence found is the one that is used.
-1.3.9 Mixin classes
+
+**1.3.9 Mixin classes**
+
 A class that collects a number of common methods and can be freely inherited by subclasses is
 usually referred to as a mixin class (some standard texts may use base, generalized or abstract
 classes, but that may not be totally correct). Such methods could be contained in a Python
 module, but the advantage of employing a mixin class is that the methods have access to the
-instance self and thus can modify t
+instance self and thus can modify the behavior of an instance. We will see examples of mixin
+classes throughout this book.
 
 
