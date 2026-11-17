@@ -1,0 +1,11 @@
+What can be learned from a chaotic cancer model? - 2013
+======================================================
+
+A simple model of three competing cell populations (host, immune and tumor cells) is revisited by
+using a topological analysis and computing observability coefficients. Our aim is to show that a nonconventional analysis might suggest new trends in 
+understanding the interactions of some tumor cells
+and their environment. The action of some parameter values on the resulting dynamics is investigated.
+Our results are related to some clinical features, suggesting that this model thus captures relevant
+phenomena to cell interactions.
+
+

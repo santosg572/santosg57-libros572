@@ -1,0 +1,17 @@
+Chaos in the brain: a short review alluding to epilepsy, depression, exercise and lateralization
+===================================================================
+
+Electroencephalograms (EEGs) reflect the electrical activity of the brain. Even when they are analyzed from healthy individuals,
+they manifest chaos in the nervous system. EEGs are likely to be produced by a nonlinear system, since a nonlinear system with
+at least 3 degrees of freedom (or state variables) may exhibit chaotic behavior. Furthermore, such systems can have multiple stable
+states governed by “chaotic” (“strange”) attractors. A key feature of chaotic systems is the presence of an infinite number of unstable
+periodic fixed points, which are found in spontaneously active neuronal networks (e.g., epilepsy).
+The brain has chemicals called neurotransmitters that convey the information through the 1016 synapses residing there. However,
+each of these neurotransmitters acts through various receptors and their numerous subtypes, thereby exhibiting complex interactions.
+Albeit in epilepsy the role of chaos and EEG findings are well proven, in another condition, i.e., depression, the role of chaos
+is slowly gaining ground. The multifarious roles of exercise, neurotransmitters and (cerebral) hemispheric lateralization, in the case
+of depression, are also being established. The common point of reference could be nonlinear dynamics.
+The purpose of this review is to study those nonlinear/chaotic interactions and point towards new theoretical models incorporating
+the oscillation caused by the same neurotransmitter acting on its different receptor subtypes. This may lead to a better understanding
+of brain neurodynamics in health and disease.  2001 IPEM. Published by Elsevier Science Ltd. All rights reserved.
+

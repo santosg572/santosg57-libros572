@@ -1,0 +1,14 @@
+THE MATHEMATICAL THEORY OF CHAOS - 1986
+
+Abstract--The basic concepts of the mathematical theory of chaos are presented through a brief analysis
+of some interesting dynamical systems in one-, two- and three-dimensional space. We start with a
+discussion of interval maps and observe that when such maps are monotonic, their iterates behave in an
+orderly fashion. Then, by way of contrast, we study a well-known quadratic map whose iterates clearly
+manifest the archetypal characteristics of chaos, such as period-doubling bifurcations and the existence
+of a strange attractor. As a means of indicating that mappings in two dimensions yield a richer variety
+of chaotic regimes than do interval maps, we next discuss the horseshoe and solenoidal mappings of the
+two-disk. Dizzying forms of chaos emerge from these mappings, but there is an irony--the chaotic
+behavior can be characterized in an orderly way. We conclude with a cursory examination of the Lorenz
+differential equation in three-space: a primary source of the recent interest in chaos theory
+
+
