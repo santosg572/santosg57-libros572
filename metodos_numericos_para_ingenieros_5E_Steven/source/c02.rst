@@ -1,0 +1,979 @@
+CAPÍTULO 2
+Programación y software
+En el capítulo anterior, desarrollamos un modelo matemático a partir de la fuerza total
+para predecir la velocidad de caída de un paracaidista. Este modelo tenía la forma de
+una ecuación diferencial,
+d
+dt g
+c
+m
+v =− v
+También vimos que se obtenía una solución de esta ecuación utilizando un método numérico simple, llamado método de Euler,
+vv
+v ii
+i d
+dt
+t +1 =+ ∆
+Dada una condición inicial, se emplea esta ecuación repetidamente para calcular la
+velocidad como una función del tiempo. Sin embargo, para obtener una buena precisión
+sería necesario desarrollar muchos pasos pequeños. Hacerlo a mano sería muy laborioso y tomaría mucho tiempo; pero, con la ayuda de 
+las computadoras tales cálculos
+pueden realizarse fácilmente.
+Por ende, nuestro siguiente objetivo consiste en observar cómo se hace esto. En el
+presente capítulo daremos una introducción al uso de la computadora como una herramienta para obtener soluciones de este tipo.
+ 2.1 PAQUETES Y PROGRAMACIÓN
+En la actualidad existen dos tipos de usuarios de software. Por un lado están aquellos
+que toman lo que se les da. Es decir, quienes se limitan a las capacidades que encuentran
+en el modo estándar de operación del software existente. Por ejemplo, resulta muy sencillo resolver un sistema de ecuaciones 
+lineales o generar una gráfica con valores x-y
+con Excel o con MATLAB. Como este modo de operación por lo común requiere un
+mínimo esfuerzo, muchos de los usuarios adoptan este modo de operación. Además,
+como los diseñadores de estos paquetes se anticipan a la mayoría de las necesidades típicas de los usuarios, muchos de los problemas 
+pueden resolverse de esta manera.
+Pero, ¿qué pasa cuando se presentan problemas que están más allá de las capacidades estándar de dichas herramientas? Por desgracia, 
+decir “Lo siento jefe, pero no lo sé
+hacer” no es algo aceptado en la mayoría de los círculos de la ingeniería. En tales casos
+usted tiene dos alternativas.
+La primera sería buscar otro paquete y ver si sirve para resolver el problema. Ésta
+es una de las razones por las que quisimos usar tanto Excel como MATLAB en este
+libro. Como veremos, ninguno de los dos abarca todo y cada uno tiene sus ventajas. 
+
+Sabiendo usar ambos, se amplía de forma notable el rango de problemas que pueden
+resolverse.
+La segunda sería que es posible volverse un “potente usuario” si se aprende a escribir macros en Excel VBA1
+ o archivos M (M-files) en MATLAB. ¿Y qué son tales cuestiones? No son más que programas computacionales que permiten ampliar la 
+capacidad
+de estas herramientas. Como los ingenieros nunca se sentirán satisfechos al verse limitados por las herramientas, harán todo lo que 
+sea necesario para resolver sus problemas.
+Una buena manera de lograrlo consiste en aprender a escribir programas en los ambientes de Excel y MATLAB. Además, las habilidades 
+necesarias para crear macros o archivos M (M-files) son las mismas que se necesitan para desarrollar efectivamente
+programas en lenguajes como Fortran 90 o C.
+El objetivo principal del capítulo es enseñarle cómo se hace esto. Sin embargo,
+supondremos que usted ya ha tenido contacto con los rudimentos de la programación y,
+por tal razón, destacaremos las facetas de la programación que afectan directamente su
+uso en la solución de problemas en ingeniería.
+2.1.1 Programas computacionales
+Los programas computacionales son únicamente conjuntos de instrucciones que dirigen
+a la computadora para realizar una cierta tarea. Hay mucha gente que escribe programas
+para un amplio rango de aplicaciones en los lenguajes de alto nivel, como Fortran 90 o
+C, porque tienen una gran variedad de capacidades. Aunque habrá algunos ingenieros
+que usarán toda la amplia gama de capacidades, la mayoría sólo necesitará realizar los
+cálculos numéricos orientados a la ingeniería.
+Visto desde esta perspectiva, reducimos toda esa complejidad a unos cuantos tópicos
+de programación, que son:
+• Representación de información sencilla (declaración de constantes, variables y tipos)
+• Representación de información más compleja (estructuras de datos, arreglos y registros)
+• Fórmulas matemáticas (asignación, reglas de prioridad y funciones intrínsecas)
+• Entrada/Salida
+• Representación lógica (secuencia, selección y repetición)
+• Programación modular (funciones y subrutinas)
+Como suponemos que el lector ya ha tenido algún contacto con la programación,
+no dedicaremos mucho tiempo en las cuatro primeras áreas. En lugar de ello, las presentamos como una lista para que el lector 
+verifique lo que necesitará saber para desarrollar los programas que siguen.
+No obstante, sí dedicaremos algún tiempo a los dos últimos tópicos. Destacaremos
+la representación lógica porque es el área que más influye en la coherencia y la comprensión de un algoritmo. Trataremos la 
+programación modular porque también contribuye
+de manera importante en la organización de un programa. Además, los módulos son un
+medio para almacenar algoritmos utilizados frecuentemente en un formato adecuado
+para aplicaciones subsecuentes.
+
+2.2 PROGRAMACIÓN ESTRUCTURADA
+En los comienzos de la computación, los programadores no daban mucha importancia
+a que sus programas fueran claros y fáciles de entender. Sin embargo, hoy se reconoce
+que escribir programas organizados y bien estructurados tiene muchas ventajas. Además
+de las ventajas obvias de tener un software más accesible para compartirlo, también
+ayuda a generar programas mucho más eficientes. Es decir, algoritmos bien estructurados, que son invariablemente mucho más fáciles 
+de depurar y de probar, lo que resulta
+en programas que toman menos tiempo desarrollar, probar y actualizar.
+Los científicos de la computación han estudiado sistemáticamente los factores y los
+procedimientos necesarios para desarrollar software de alta calidad de este tipo. En
+esencia la programación estructurada es un conjunto de reglas que desarrollan en el
+programador los hábitos para lograr un buen estilo. Aunque la programación estructurada es bastante flexible para permitir 
+considerable creatividad y expresión personal, sus
+reglas imponen suficientes restricciones para hacer que los programas resultantes sean
+muy superiores a sus versiones no estructuradas. En particular, el producto terminado
+es mucho más elegante y fácil de entender.
+La idea clave detrás de la programación estructurada es que cualquier algoritmo
+numérico requiere tan sólo de tres estructuras de control fundamentales: secuencia, selección y repetición. Limitándonos a dichas 
+estructuras el programa resultante será claro
+y fácil de seguir.
+En los párrafos siguientes describiremos cada una de estas estructuras. Para mantener esta descripción de una manera general 
+usaremos diagramas de flujo y seudocódigo. Un diagrama de flujo es una representación visual o gráfica de un algoritmo. Un
+diagrama de flujo emplea una serie de cajas o bloques y flechas, cada una de las cuales
+representa un determinado paso u operación del algoritmo (figura 2.1). Las flechas representan el orden en el que se realizarán las 
+operaciones.
+No todas las personas relacionadas con la computación están de acuerdo en que los
+diagramas de flujo sean una buena opción. Incluso, algunos programadores experimentados no usan los diagramas de flujo. Sin embargo, 
+nosotros pensamos que existen tres
+buenas razones para estudiarlos. La primera es que sirven para expresar y comunicar
+algoritmos. La segunda es que aunque no se empleen de manera rutinaria, algunas veces
+resultarán útiles para planear, aclarar o comunicar la lógica del propio programa o del
+de otra persona. Por último, que es lo más importante para nuestros objetivos, son excelentes herramientas didácticas. Desde el 
+punto de vista de la enseñanza, son los medios
+ideales para visualizar algunas de las estructuras de control fundamentales que se emplean en la programación.
+Otra manera de expresar algoritmos, y que constituye un puente de unión entre los
+diagramas de flujo y el código de la computadora, es el seudocódigo. En esta técnica se
+utilizan expresiones semejantes a las del código, en lugar de los símbolos gráficos del
+diagrama de flujo. En esta obra, para el seudocódigo hemos adoptado algunas convenciones de estilo. Escribiremos con mayúsculas las 
+palabras clave como IF, DO, INPUT,
+etc., mientras que las condiciones, pasos del proceso y tareas irán en minúsculas. Además,
+los pasos del proceso se escribirán en forma indentada. De esta manera las palabras
+clave forman un “sandwich” alrededor de los pasos para definir visualmente lo que
+abarca cada estructura de control.
+
+Una ventaja del seudocódigo es que con él resulta más fácil desarrollar un programa
+que con el diagrama de flujo. El seudocódigo es también más fácil de modificar y de
+compartir con los demás. No obstante, los diagramas de flujo, debido a su forma gráfica, resultan a veces más adecuados para 
+visualizar algoritmos complejos. Nosotros
+emplearemos diagramas de flujo con fines didácticos, y el seudocódigo será el principal
+medio que usaremos para comunicar algoritmos relacionados con métodos numéricos.
+2.2.1 Representación lógica
+Secuencia. La estructura secuencial expresa la trivial idea de que, a menos que se
+indique otra cosa, el código debe realizarse instrucción por instrucción. Como en la figura 2.2, la estructura se puede expresar de 
+manera general como un diagrama de flujo
+o como un seudocódigo.
+Selección. En contraste con el paso por paso de la estructura secuencial, la selección nos
+ofrece un medio de dividir el flujo del programa en ramas considerando el resultado de
+una condición lógica. La figura 2.3 muestra las dos principales maneras de hacer esto.
+La decisión ante una sola alternativa, o estructura IF/THEN (figura 2.3a), nos permite una desviación en el flujo del programa si 
+una condición lógica es verdadera. Si
+esta condición es falsa no ocurre nada y el programa continúa con la indicación que se
+encuentra después del ENDIF. La decisión ante dos alternativas, o estructura IF/THEN/
+ELSE (figura 2.3b), se comporta de la misma manera si la condición es verdadera; sin
+embargo, si la condición es falsa, el programa realiza las instrucciones entre el ELSE y
+el ENDIF.
+
+Aunque las estructuras IF/THEN e IF/THEN/ELSE son suficientes para construir cualquier algoritmo numérico, por lo común también se 
+usan otras dos variantes. Suponga que el
+ELSE de un IF/THEN/ELSE contiene otro IF/THEN. En tales casos el ELSE y el IF se pueden combinar en la estructura IF/THEN/ELSEIF que 
+se muestra en la figura 2.4a.
+
+Observe que en la figura 2.4a hay una cadena o “cascada” de decisiones. La primera es una instrucción IF y cada una de las 
+decisiones sucesivas es un ELSEIF. Siguiendo
+la cadena hacia abajo, la primera condición que resulte verdadera ocasionará una desviación a su correspondiente bloque de código, 
+seguida por la salida de la estructura. Al
+final de la cadena de condiciones, si todas las condiciones resultaron falsas, se puede
+adicionar un bloque ELSE opcional.
+
+La estructura CASE es una variante de este tipo de toma de decisiones (figura 2.4b).
+En lugar de probar condiciones individuales, las ramificaciones dependen del valor de
+una sola expresión de prueba. Según sea su valor, se presentarán diferentes bloques
+de código. Además, si la expresión no toma ninguno de los valores previstos, se puede
+proponer un bloque opcional (CASE ELSE).
+Repetición. La repetición nos proporciona una manera de llevar a cabo instrucciones
+repetidamente. Las estructuras resultantes, llamadas loops o ciclos, se presentan en dos
+formas distintas que se diferencian por la manera en que terminan.
+El primer tipo, y el fundamental, es el llamado loop de decisión debido a que termina basándose en el resultado de una condición 
+lógica. La figura 2.5 muestra el tipo
+general de loop de decisión, la construcción DOEXIT, también llamada loop de interrupción (break loop). Esta estructura realiza 
+repeticiones hasta que una condición lógica resulte verdadera.
+En esta estructura no es necesario tener dos bloques. Cuando se omite el primer
+bloque, a la estructura se le suele llamar loop de preprueba porque la prueba lógica se
+realiza antes de que ocurra algo. Si se omite el segundo bloque, se le llama loop posprueba. Al caso general, en el que se incluyen 
+los dos bloques, se le llama loop de
+prueba intermadia (midtest).
+Hay que hacer notar que el loop DOEXIT fue introducido en Fortran 90 para tratar
+de simplificar los loops de decisión. Esta estructura de control es parte estándar del
+lenguaje VBA de macros en Excel; pero no forma parte estándar de C o de MATLAB,
+que usan la estructura llamada WHILE. Como nosotros consideramos superior a la
+estructura DOEXIT, la hemos adoptado en este libro como la estructura de loop de
+decisión. Para que nuestros algoritmos se realicen tanto en MATLAB como en Excel,
+mostraremos más adelante, en este capítulo (véase la sección 2.5), cómo simular el loop
+de interrupción usando la estructura WHILE.
+
+Al loop de interrupción que se presenta en la figura 2.5 se le llama loop lógico
+porque termina a causa de una condición lógica. Por otro lado, se tiene el loop controlado por contador o loop DOFOR (figura 2.6) 
+que realiza un número determinado de
+repeticiones o iteraciones.
+El loop controlado por contador funciona como sigue. El índice (representado por
+i en la figura 2.6) es una variable a la que se le da un valor inicial. El programa prueba
+si el índice es menor o igual al valor final, fin. Si es así, entonces ejecuta el cuerpo del
+loop y vuelve al DO. Cada vez que encuentra el ENDDO el índice se incrementa automáticamente con el valor definido por el 
+incremento. De manera que el índice actúa
+como un contador. Cuando el índice es mayor que el valor final (fin), la computadora
+sale automáticamente del loop y transfiere el control a la línea que sigue después del
+ENDDO. Observe que casi en todos los lenguajes de programación, incluyendo Excel y
+MATLAB, si se omite el incremento, la computadora supone que éste es igual a 1.2
+Los algoritmos numéricos que se describen en las páginas siguientes se desarrollarán usando únicamente las estructuras presentadas 
+en las figuras 2.2 a 2.6. El ejemplo
+siguiente presenta el método básico para desarrollar un algoritmo que determine las
+raíces de la ecuación cuadrática.
+EJEMPLO 2.1 Algoritmo para las raíces de la ecuación cuadrática
+Planteamiento del problema. Las raíces de una ecuación cuadrática
+ax2
+ + bx + c = 0
+se determinan mediante la fórmula cuadrática,
+x
+x
+b b ac
+a
+1
+2
+2 4
+2 = – |– | ± (2.1)
+FIGURA 2.6
+Construcción controlada
+por conteo o construcción
+DOFOR.
+Verdadero i = inicio
+Falso
+i > fin
+? i = i + incr. DOFOR i = inicio, fin, incremento
+ENDDO
+Diagrama de flujo Seudocódigo
+Bloque
+2
+ Se puede usar incremento (decremento) negativo, en cuyo caso el loop termina cuando el índice es menor
+que el valor fi nal.
+
+Desarrolle un algoritmo que haga lo siguiente:
+Paso 1: Pida al usuario los coefi cientes a, b y c.
+Paso 2: Realice las operaciones de la fórmula cuadrática previendo todas las eventualidades
+(como, por ejemplo, evitar la división entre cero y permitir raíces complejas).
+Paso 3: Dé la solución, es decir, los valores de x.
+Paso 4: Dé al usuario la opción de volver al paso 1 y repetir el proceso.
+Solución. Para desarrollar el algoritmo usaremos un método que va de lo general a lo
+particular (método top-down). Esto es, iremos refinando cada vez más el algoritmo en
+lugar de detallar todo a la primera vez.
+Para esto, supongamos, por lo pronto, que ya probamos que están bien los valores
+de los coeficientes de la fórmula cuadrática (claro que esto no es cierto, pero por lo
+pronto así lo consideraremos). Un algoritmo estructurado para realizar la tarea es
+DO
+ INPUT a, b, c
+ r1 = (—b + SQRT (b2 — 4ac))/(2a)
+ r2 = (—b — SQRT (b2 — 4ac))/(2a)
+ DISPLAY r1, r2
+ DISPLAY ‘¿Repetir? Conteste sí o no’
+ INPUT respuesta
+ IF respuesta = ‘no’ EXIT
+ENDDO
+La construcción DOEXIT se utiliza para repetir el cálculo de la ecuación cuadrática siempre que la condición sea falsa. La condición 
+depende del valor de la variable de
+tipo carácter respuesta. Si respuesta es igual a ‘sí’ entonces se llevan a cabo los cálculos.
+Si no es así, si respuesta es igual a ‘no’, el loop termina. De esta manera, el usuario
+controla la terminación mediante el valor de respuesta.
+Ahora bien, aunque el algoritmo anterior funcionará bien en ciertos casos, todavía
+no está completo. El algoritmo quizá no funcione para algunos valores de las variables.
+Esto es:
+• Si a = 0 se presentará inmediatamente un problema debido a la división entre cero.
+Si inspeccionamos cuidadosamente la ecuación (2.1) veremos que aquí se pueden
+presentar dos casos:
+ Si b ≠ 0, la ecuación se reduce a una ecuación lineal con una raíz real, –c/b
+ Si b = 0, entonces no hay solución. Es decir, el problema es trivial.
+• Si a ≠ 0, entonces, según sea el valor del discriminante, d = b2
+ – 4ac, se pueden
+presentar también dos casos,
+ Si d ≥ 0, habrá dos raíces reales.*
+ Si d < 0, habrá dos raíces complejas.
+Observe cómo hemos dejado una sangría adicional para hacer resaltar la estructura de
+decisión que subyace a las matemáticas. Esta estructura se traduce, después, en un conjunto de estructuras IF/THEN/ELSE acopladas 
+que se pueden insertar en la parte con los
+comandos sombreados en el código anterior, obteniéndose finalmente el algoritmo:
+
+DO
+ INPUT a, b, c
+ r1 = 0: r2 = 0: i1 = 0: i2 = 0
+ IF a = 0 THEN
+ IF b ≠ 0 THEN
+ r1 = –c/b
+ ELSE
+ DISPLAY “Solución trivial”
+ ENDIF
+ ELSE
+ discr = b2 – 4 * a * c
+ IF discr ≥ 0 THEN
+ r1 = (–b + Sqrt(discr))/(2 * a)
+ r2 = (–b – Sqrt(discr))/(2 * a)
+ ELSE
+ r1 = –b/(2 * a)
+ r2 = r1
+ i1 = Sqrt(Abs(discr))/(2 * a)
+ i2 = –i1
+ ENDIF
+ ENDIF
+ DISPLAY r1, r2, i1, i2
+ DISPLAY ‘¿Repetir? Conteste sí o no’
+ INPUT respuesta
+ IF respuesta = ‘no’ EXIT
+ENDDO
+El método que se utilizó en el problema anterior puede emplearse para desarrollar
+un algoritmo para el problema del paracaidista. Recordemos que, dadas la condición
+inicial para tiempo y velocidad, el problema consistía en resolver de manera iterativa la
+fórmula
+vv
+v ii
+i d
+dt
+t +1 =+ ∆ (2.2)
+Como sabemos, para lograr una buena precisión será necesario emplear incrementos
+pequeños. Por lo que será necesario emplear la fórmula repetidas veces, desde el tiempo
+inicial hasta el tiempo final. En consecuencia, un algoritmo para resolver este problema
+estará basado en el uso de un loop.
+Supongamos, por ejemplo, que empezamos los cálculos en t = 0 y queremos predecir la velocidad en t = 4 s con incrementos de tiempo 
+∆t = 0.5 s. Entonces tendremos que
+aplicar la ecuación (2.2) ocho veces, esto es,
+n == 4
+05
+8 .
+donde n es el número de iteraciones del loop. Como este número es exacto, es decir, esta
+división nos da un número entero, podemos usar como base del algoritmo un loop controlado por contador. A continuación damos un 
+ejemplo de seudocódigo.
+
+g = 9.8
+INPUT cd, m
+INPUT ti, vi, tf, dt
+t = ti
+v = vi
+n = (tf — ti) / dt
+DOFOR i = 1 TO n
+ dvdt = g — (cd / m) * v
+ v = v + dvdt * dt
+ t = t + dt
+ENDDO
+DISPLAY v
+3
+ Este problema se combina con el hecho de que las computadoras usan internamente, para la representación de
+números, la base 2. En consecuencia, algunos números que aparentemente son divisibles no dan exactamente
+un entero cuando la división se hace en una computadora. De esto hablaremos en el capítulo 3.
+Aunque este esquema es fácil de programar, no está completo. Sólo funcionará si el
+intervalo es divisible exactamente entre el incremento.3
+ Para tomar en cuenta el otro
+caso, en el código anterior, en lugar del área sombreada se puede usar un loop de decisión.
+El resultado es:
+g = 9.8
+INPUT cd, m
+INPUT ti, vi, tf, dt
+t = ti
+v = vi
+h = dt
+DO
+ IF t + dt > tf THEN
+ h = tf — t
+ ENDIF
+ dvdt = g — (cd / m) * v
+ v = v + dvdt * h
+ t = t + h
+ IF t ≥ tf EXIT
+ENDDO
+DISPLAY v
+Al introducir el loop, usamos la estructura IF/THEN para probar si el valor t + dt
+nos lleva más allá del final del intervalo. Si no es así, lo cual comúnmente será el caso
+al principio, no hacemos nada. De lo contrario, necesitaremos reducir el intervalo haciendo el tamaño de incremento h igual a tf – 
+t. Así, garantizamos que el paso siguiente
+caiga precisamente en tf. Después de hacer este paso final, el loop terminará, debido a
+que t ≥ tf será verdadero.
+Observe que antes de entrar en el loop hemos asignado el valor del incremento, dt,
+a otra variable, h. Creamos esta variable con el objeto de que nuestra rutina no cambie
+el valor de dt cuando tengamos que reducir el incremento. Hacemos esto anticipándonos
+a que tengamos que usar el valor original de dt en algún otro lado, en el caso de que este
+programa sea parte de otro programa mayor.
+
+Hay que destacar que este algoritmo aún no está terminado. Puede ser, por ejemplo,
+que el usuario dé por error un incremento que sea mayor que el intervalo, como por
+ejemplo, tf – ti = 5 y dt = 20. Entonces, habrá que poner, en el programa, trampas para
+detectar tales errores y que el usuario pueda corregirlos.
+ 2.3 PROGRAMACIÓN MODULAR
+Imaginemos qué difícil sería estudiar un libro que no tuviera capítulos, ni secciones, ni
+párrafos. Dividir una tarea o una materia complicada en partes más accesibles es una
+manera de hacerla más fácil. Siguiendo esta misma idea, los programas de computación
+se dividen en subprogramas más pequeños, o módulos que pueden desarrollarse y probarse por separado. A esta forma de trabajar se le 
+llama programación modular.
+La principal cualidad de los módulos es que son tan independientes y autosuficientes como sea posible. Además, en general, están 
+diseñados para llevar a cabo una función
+específica y bien definida, y tienen un punto de entrada y un punto de salida. Los módulos a menudo son cortos (50 a 100 
+instrucciones) y están bien enfocados.
+En los lenguajes estándar de alto nivel como Fortran 90 y C, el principal elemento
+de programación usado para representar módulos es el procedimiento. Un procedimiento es un conjunto de instrucciones para 
+computadora que juntas realizan una tarea dada.
+Se emplean comúnmente dos tipos de procedimientos: funciones y subrutinas. Las
+primeras normalmente dan un solo resultado, mientras que las últimas dan varios.
+Además, hay que mencionar que gran parte de la programación relacionada con paquetes de software como Excel y MATLAB implica el 
+desarrollo de subprogramas. Así, los
+macros de Excel y las funciones de MATLAB están diseñadas para recibir información,
+llevar a cabo un cálculo y dar un resultado. De manera que el pensamiento modular también
+es consistente con la manera en que se programa en ambientes de paquetes.
+La programación modular tiene diversas ventajas. El uso de unidades pequeñas e
+independientes hace que la lógica subyacente sea más fácil de seguir y de entender,
+tanto para el que desarrolla el módulo como para el usuario. Se facilita el desarrollo
+debido a que se puede perfeccionar cada módulo por separado. En proyectos grandes,
+varios programadores pueden trabajar por separado las diferentes partes individuales.
+En el diseño modular también la depuración y la prueba de un programa se simplifican
+debido a que los errores se pueden encontrar con facilidad. Por último, es más sencillo
+el mantenimiento y la modificación del programa. Esto se debe principalmente a que se
+pueden desarrollar nuevos módulos que desarrollen tareas adicionales e incorporarlos
+en el esquema coherente y organizado que ya se tiene.
+Aunque todas esas ventajas son razones suficientes para usar módulos, la razón más
+importante, relacionada con la solución de problemas numéricos en ingeniería, es que
+permiten tener una biblioteca de módulos útiles para posteriores usos en otros programas.
+Ésta será la filosofía de la presente obra: todos los algoritmos serán presentados como
+módulos.
+El procedimiento anterior se ilustra en la figura 2.7 que muestra una función desarrollada para usar el método de Euler. Observe que 
+esa función y las versiones previas
+difieren en cómo manipulan la entrada y la salida (input/output). En las versiones anteriores directamente la entrada viene 
+(mediante el INPUT) del usuario, y la salida va
+(mediante el DISPLAY) al usuario. En la función, se le da la entrada a ésta mediante su
+lista de argumentos FUNCTION
+
+FUNCTION Euler(dt, ti, tf, yi)
+t = ti
+y = yi
+h = dt
+DO
+ IF t + dt > tf THEN
+ h = tf — t
+ ENDIF
+ dydt = dy(t, y)
+ y = y + dydt * h
+ t = t + h
+ IF t ≥ tf EXIT
+ENDDO
+Euler = y
+END
+y la salida es regresada mediante una asignación
+y = Euler(dt, ti, tf, yi)
+Observe, además, lo general que se ha vuelto esta rutina. No se hace para nada referencia al caso específico del paracaidista. Por 
+ejemplo, dentro de la función, en lugar
+de llamar a la variable dependiente v, de velocidad, se le nombra y, de manera más general. Asimismo, note que la derivada no se 
+calcula mediante una ecuación explícita
+dentro de la función. En lugar de ello se llama a otra función dy para calcularla, lo cual
+indica el hecho de que podemos usar esta función en muchos problemas distintos, además
+de encontrar la velocidad del paracaidista.
+ 2.4 EXCEL
+Excel es una hoja de cálculo producida por Microsoft Inc. Las hojas de cálculo son un
+tipo especial de software para matemáticas que permite al usuario ingresar y realizar
+cálculos en renglones y columnas de datos. Como tales, son una versión computarizada
+de una gran hoja de contabilidad en la que se lleva a cabo una gran cantidad de cálculos
+interrelacionados. Puesto que cuando se modifica un valor de la hoja, hay que actualizar
+todos los cálculos, las hojas de cálculo son ideales para hacer análisis del tipo “¿y qué
+pasa si...?”
+Excel cuenta con varios recursos numéricos interconstruidos como resolución de
+ecuaciones, ajuste de curvas y optimización. Incluye también VBA como un lenguaje de
+macro que sirve para hacer cálculos numéricos. Por último, tiene varias herramientas
+para la visualización como diagramas y gráficas tridimensionales, que son un valioso
+complemento para el análisis numérico. En esta sección mostraremos cómo se utilizan
+estos recursos en la solución del problema del paracaidista.
+
+Para ello, construimos primero una hoja de cálculo sencilla. Como se ve abajo, el
+primer paso consiste en colocar números y letras o palabras en las celdas de la hoja de
+cálculo.
+Antes de escribir un programa de macro para calcular el valor numérico, podemos
+facilitar el trabajo consecuente dando nombres a los valores de los parámetros. Para esto,
+seleccione las celdas A3:B5 (la manera más fácil de hacerlo es mover el ratón hasta A3,
+mantener oprimido el botón izquierdo del ratón y arrastrarlo hasta B5). Después seleccione, del menú,
+Insert Name Create Left column OK
+Para verificar que todo haya funcionado correctamente, seleccione la celda B3 y verifique que aparezca la etiqueta “m” en la casilla 
+del nombre (casilla que se encuentra en el
+lado izquierdo de la hoja, justo debajo de las barras del menú).
+Muévase hasta la celda C8 e introduzca la solución analítica (ecuación 1.9),
+=9.8*m/cd*(1-exp(-cd/m*A8))
+Al introducir esta fórmula debe aparecer el valor 0 en la celda C8. Después copie la
+fórmula a la celda C9 para obtener 16.405 m/s.
+Todo lo anterior es típico del uso estándar de Excel. Hecho esto, podría, por
+ejemplo, cambiar los valores de los parámetros y observar cómo se modifica la solución analítica.
+Ahora mostraremos cómo se usan las macros de VBA para extender los recursos
+estándar. En la figura 2.8 se da una lista que contiene, para cada una de las estructuras
+de control dadas en la sección anterior (figuras 2.2 a 2.6), el seudocódigo junto con el
+código VBA de Excel. Observe que, aunque los detalles difieren, la estructura del seudocódigo y la del código VBA son idénticas.
+Ahora podemos usar algunas de las construcciones dadas en la figura 2.8 para escribir una función de macro que calcule la velocidad. 
+Para abrir VBA seleccione4
+Tools Macro Visual Basic Editor
+
+Una vez dentro del Visual Basic Editor (VBE), seleccione
+Insert Module
+y se abrirá una nueva ventana para código. La siguiente función en VBA se puede obtener directamente del seudocódigo de la figura 
+2.7. Escriba la función dentro de la nueva
+ventana.
+Option Explicit
+Function Euler(dt, ti, tf, yi, m, cd)
+Dim h As Single, t As Single, y As Single, dydt As Single
+t = ti
+y = yi
+h = dt
+Do
+ If t + dt > tf Then
+ h = tf – t
+ End If
+ dydt = dy(t, y, m, cd)
+ y = y + dydt * h
+ t = t + h
+ If t >= tf Then Exit Do
+Loop
+Euler = y
+End Function
+Compare esta macro con el seudocódigo de la figura 2.7 y vea que son muy similares. Observe también cómo la lista de argumentos de 
+la función se hizo más larga al
+incluir los parámetros necesarios para el modelo de la velocidad del paracaidista. La
+velocidad obtenida, v, pasa a la hoja de cálculo mediante el nombre de la función.
+Note también cómo, para calcular la derivada, hemos usado otra función. Ésta se
+puede introducir en el mismo módulo tecleándola directamente debajo de la función
+Euler,
+Function dy(t, v, m, cd)
+Const g As Single = 9.8
+dy = g – (cd / m) * v
+End Function
+El paso final consiste en volver a la hoja de cálculo y llamar a la función introduciendo la siguiente expresión en la celda B9.
+=Euler(dt,A8,A9,B8,m,cd)
+El resultado de la integración numérica, 16.531, aparecerá en la celda B9.
+Vamos a ver qué ha pasado aquí. Cuando usted da la función en la celda de la hoja
+de cálculo, los parámetros pasan al programa VBA, donde se realizan los cálculos y,
+después, el resultado regresa a la celda. En efecto, el lenguaje de macros VBA le permite usar Excel como mecanismo de entradas y 
+salidas (input/output). Esta característica
+resulta de mucha utilidad. 
+
+Por ejemplo, ahora que ya tiene todos los cálculos, puede jugar con ellos. Suponga
+que el paracaidista fuera mucho más pesado, digamos, m = 100 kg (alrededor de 200
+libras). Introduzca 100 en la celda B3 y la hoja de cálculo se modificará de inmediato
+mostrando el valor 17.438 en la celda B9. Cambie la masa nuevamente a 68.1 kg y el
+resultado anterior, 16.531 reaparecerá de forma automática en la celda B9.
+Ahora vayamos un poco más adelante dando algunos valores más para el tiempo.
+Introduzca los números 4, 6, …, 16 en las celdas A10 a A16. Después copie las fórmulas
+de las celdas B9:C9 hacia abajo en los renglones 10 a 16. Observe cómo el programa
+VBA calcula correctamente los resultados numéricos en cada uno de los nuevos renglones. (Para verificar esto cambie el valor de dt 
+por 2 y compare los resultados con los
+cálculos a mano obtenidos anteriormente, en el ejemplo 1.2.) Para mejorar la presentación
+se pueden graficar los resultados en un plano x-y usando Excel Chart Wizard.
+Arriba se muestra la hoja de cálculo resultante. Hemos creado una valiosa herramienta para la solución de problemas. Puede realizar 
+un análisis de sensibilidad cambiando los valores de cada uno de los parámetros. Cada vez que se introduce un nuevo
+valor, se modificarán automáticamente los cálculos y la gráfica. Tal característica de
+interactividad es lo que hace tan potente a Excel. No obstante, se debe reconocer que
+resolver este problema dependerá de la habilidad para escribir el macro en VBA.
+La combinación del ambiente de Excel con el lenguaje de programación VBA nos
+abre un mundo de posibilidades para la solución de problemas en ingeniería. En los
+capítulos siguientes ilustraremos cómo se logra esto.
+ 2.5 MATLAB
+MATLAB es el principal producto de software de Mathworks, Inc., fundada por los analistas
+numéricos Cleve Moler y John N. Little. Como su nombre lo indica, MATLAB se
+desarrolló originalmente como un laboratorio para matrices. Hoy, el elemento principal 
+
+de MATLAB sigue siendo la matriz. La manipulación matemática de matrices se ha
+realizado muy adecuadamente en un ambiente interactivo fácil de utilizar. A esta manipulación matricial, MATLAB agrega varias 
+funciones numéricas, cálculos simbólicos
+y herramientas para visualización. En consecuencia, la versión actual representa un
+ambiente computacional bastante amplio.
+MATLAB tiene diferentes funciones y operadores que permiten la adecuada realización de los métodos numéricos que aquí desarrollamos. 
+Éstos se describirán con detalle en los capítulos siguientes. Además, se pueden escribir programas como los
+llamados archivos M (m-files) que sirven para realizar cálculos numéricos. Vamos a
+explorar cómo funciona.
+Primero, usted se dará cuenta de que el uso normal de MATLAB está estrechamente relacionado con la programación. Supongamos, por 
+ejemplo, que queremos determinar la solución analítica al problema del paracaidista, lo cual haríamos con los
+siguientes comandos de MATLAB
+>> g=9.8;
+>> m=68.1;
+>> cd=12.5;
+>> tf=2;
+>> v=g*m/cd*(1-exp(-cd/m*tf))
+obteniéndose como resultado
+v =
+ 16.4050
+La secuencia de comandos es como la secuencia de instrucciones en un lenguaje de
+programación típico.
+Pero, ¿qué ocurre si usted se quiere desviar de la estructura secuencial? Aunque hay
+algunos caminos bien definidos para establecer recursos no secuenciales en el modo
+estándar de comandos, para introducir decisiones y loops, lo mejor es crear un documento de MATLAB al que se le llama archivo-m 
+(m-file). Para hacer esto haga clic en
+File New Mfile
+y se abrirá una ventana nueva con el encabezado “MATLAB Editor/Debugger”. En esta
+ventana usted puede escribir y editar programas en MATLAB. Escriba ahí el código
+siguiente:
+g=9.8;
+m=68.1;
+cd=12.5;
+tf=2;
+v=g*m/cd*(1-exp(-cd/m*tf))
+Obsérvese que los comandos se escriben exactamente en la misma forma en que se
+haría en el extremo frontal de MATLAB. Guarde el programa con el mismo nombre:
+analpara. MATLAB agregará en forma automática la extensión .m para denotar que se
+trata de un archivo M: analpara.m.
+Para correr el programa, se debe regresar al modo de comando. La forma más directa de efectuar esto consiste en hacer clic en el 
+botón “MATLAB Command Window” 
+
+que se encuentra en la barra de tareas (que por lo general está en la parte inferior de la
+pantalla).
+Ahora, el programa se puede correr al hacer clic en el archivo M, analpara, que debe
+parecerse a lo siguiente:
+>> analpara
+Si usted ha hecho todo en forma correcta, MATLAB debe responder con la respuesta
+correcta:
+v =
+ 16.4050
+Ahora, un problema con lo anterior es que está preparado para calcular sólo un caso.
+El lector lo puede hacer más flexible si hace que el usuario introduzca algunas de las
+variables. Por ejemplo, suponga que desea evaluar el efecto de la masa sobre la velocidad
+a los 2 s. Para hacer esto, el archivo M podría reescribirse como sigue:
+g=9.8;
+m=input(‘masa (kg):’);
+cd=12.5;
+tf=2;
+v=g*m/cd*(1-exp(-cd/m*tf))
+Guarde esto con el nombre de analpara2.m. Si escribió analpara2 mientras se encontraba en el modo de comando, la línea mostrará lo 
+que sigue:
+masa (kg):
+Entonces, el usuario introduce un valor como 100, y el resultado aparecerá como:
+v =
+ 17.3420
+Ahora, debe quedar bastante claro cómo se puede programar una solución numérica por medio de un archivo M. A fin de hacerlo, primero 
+debemos entender la manera
+en que MATLAB maneja las estructuras lógica y de lazo (ciclos o loops). En la figura
+2.9 se enlista el seudocódigo junto con el código de MATLAB para todas las estructuras
+de control, con base en la sección anterior. Aunque las estructuras del seudocódigo y el
+código MATLAB son muy similares, existen algunas diferencias pequeñas que deben
+destacarse.
+En especial, observe cómo hemos expresado la estructura DOEXIT. En lugar del
+DO usamos el WHILE(1). Como MATLAB interpreta al número 1 como correspondiente a “verdadero”, esta instrucción se repetirá 
+indefinidamente de la misma manera
+que el DO. El loop termina con un comando de interrupción (break), el cual transfiere
+el control a la instrucción que se encuentra a continuación, de la instrucción end que
+termina el ciclo.
+También hay que observar que los parámetros del lazo controlado por contador
+están ordenados de modo diferente. Para el seudocódigo, los parámetros del lazo están 
+
+especificados como start, finish, step. Para MATLAB, los parámetros están
+ordenados como start:step:finish.
+Ahora el siguiente archivo-m de MATLAB se puede desarrollar directamente, a
+partir del seudocódigo dado en la figura 2.7. Escriba lo siguiente en el Editor/Debugger
+de MATLAB:
+g=9.8;
+m=input(‘mass (kg):’);
+cd=12.5;
+ti=0;
+tf=2;
+vi=0;
+dt=0.1;
+t = ti;
+v = vi;
+h = dt;
+while (1)
+ if t + dt > tf
+ h = tf – t;
+ end
+ dvdt = g – (cd / m) * v;
+ v = v + dvdt * h;
+ t = t + h;
+ if t >= tf, break, end
+end
+disp(‘velocity (m/s):’)
+disp(v)
+Guarde este archivo como numpara.m, vuelva al modo de comandos y córralo dando
+numpara. Obtendrá la siguiente salida:
+masa (kg): 100
+velocity (m/s):
+ 17.4381
+Por último vamos a convertir este archivo-m en una función. Esto se puede hacer
+en el siguiente archivo-m basado en el seudocódigo de la figura 2.7:
+function euler = f(dt,ti,tf,yi,m,cd)
+t = ti;
+y = yi;
+h = dt;
+while (1)
+ if t + dt > tf
+ h = tf – t;
+ end
+ dydt = dy(t, y, m, cd);
+ y = y + dydt * h;
+ t = t + h;
+ if t >= tf, break, end
+end
+yy = y;
+
+Guarde este archivo como euler.m y después cree otro archivo-m para calcular la derivada,
+function dydt = dy(t, v, m, cd)
+g = 9.8;
+dydt = g – (cd / m) * v;
+Guarde este archivo como dy.m y regrese al modo de comandos. Para llamar la función
+y ver el resultado, teclee los siguientes comandos
+>> m=68.1;
+>> cd=12.5;
+>> ti=0;
+>> tf=2.;
+>> vi=0;
+>> dt=0.1;
+>> euler(dt,ti,tf,vi,m,cd)
+Una vez dado el último comando, se desplegará el resultado
+ans =
+16.5309
+La combinación del ambiente de MATLAB con el lenguaje de programación para
+los archivos-m nos abre un mundo de posibilidades para la solución de problemas en
+ingeniería. En el siguiente capítulo veremos cómo se hace esto.
+ 2.6 OTROS LENGUAJES Y BIBLIOTECAS
+En la sección anterior mostramos cómo se escribe una función en Excel o MATLAB,
+para el método de Euler, a partir de un algoritmo expresado en seudocódigo. Funciones
+semejantes se escriben en los lenguajes de alto nivel como Fortran 90 y C++. Por ejemplo, una función en Fortran 90 para el método 
+de Euler es
+Function Euler(dt, ti, tf, yi, m, cd)
+REAL dt, ti, tf, yi, m, cd
+Real h, t, y, dydt
+t = ti
+y = yi
+h = dt
+Do
+ If (t + dt > tf) Then
+ h = tf – t
+ End If
+ dydt = dy(t, y, m, cd)
+ y = y + dydt * h
+ t = t + h
+ If (t >= tf) Exit
+End Do
+
+Euler = y
+End Function
+En C el resultado sería bastante similar a la función escrita en MATLAB. El punto
+es que una vez que se ha desarrollado bien un algoritmo estructurado en seudocódigo, es
+fácil implementarlo en diversos ambientes de programación.
+En este libro daremos al lector procedimientos bien estructurados escritos en seudocódigo. Esta colección de algoritmos constituirá 
+una biblioteca numérica, que se
+puede usar para realizar tareas numéricas específicas con diversas herramientas de software y lenguajes de programación.
+Además de tener sus propios programas, usted debe recordar que las bibliotecas
+comerciales de programación tienen muchos procedimientos numéricos útiles. Por
+ejemplo, la biblioteca Numerical Recipe contiene una gran variedad de algoritmos escritos en Fortran y C.5
+ Estos procedimientos se describen tanto en libros (por ejemplo,
+Press et al., 1992) como en forma electrónica.
+En Fortran, la IMSL (International Mathematical and Statistical Library) ofrece más
+de 700 procedimientos que comprenden todas las áreas numéricas cubiertas en este libro.
+Dada la amplia divulgación de Fortran en la ingeniería, incluimos algunas aplicaciones
+de IMSL.
+
+2.1 Escriba el seudocódigo para implementar el diagrama de
+flujo que se ilustra en la figura P2.1. Asegúrese de incluir la indentación apropiada para que la estructura sea clara.
+2.2 Vuelva a escribir el seudocódigo siguiente, con el uso de la
+indentación apropiada.
+DO
+i = i + 1
+IF z > 50 EXIT
+x = x + 5
+IF x > 5 THEN
+y = x
+ELSE
+y = 0
+ENDIF
+z = x + y
+ENDDO
+
+2.3 En cada una de las tarjetas de un conjunto de cartas índice,
+se registra un valor para la concentración de un contaminante en
+un lago. Al final del conjunto, se coloca una carta marcada como
+“fin de los datos”. Escriba un algoritmo para determinar la suma,
+el promedio y el máximo de dichos valores.
+2.4 Escriba un diagrama de flujo estructurado para el problema 2.3.
+2.5 Desarrolle, depure y documente un programa para determinar
+las raíces de una ecuación cuadrática, ax2
+ + bx + c, en cualquier
+lenguaje de alto nivel, o de macros, de su elección. Utilice un
+procedimiento de subrutina para calcular las raíces (sean reales o
+complejas). Ejecute corridas de prueba para los casos en que a) a
+= 1, b = 6, c = 2; b) a = 0, b = –4, c = 1.6; c) a = 3, b = 2.5, c = 7.
+2.6 La función coseno puede evaluarse por medio de la serie
+infinita siguiente:
+cos x xxx =− + − + 1
+246
+246
+!!! 
+Escriba un algoritmo para implementar esta fórmula de modo
+que calcule e imprima los valores de cos x conforme se agregue
+cada término de la serie. En otras palabras, calcule e imprima la
+secuencia de valores para
+cos
+cos
+cos
+x
+x x
+x xx
+=
+=−
+=− +
+1
+1
+2
+1
+24
+2
+24
+!
+!!
+hasta el término de orden n que usted elija. Para cada uno de los
+valores anteriores, calcule y haga que se muestre el error porcentual relativo:
+%% error = valor verdadero – aproximación con la serie
+valor verdadero
+×100
+2.7 Escriba el algoritmo para el problema 2.6 en forma de a)
+diagrama de flujo estructurado, y b) seudocódigo.
+2.8 Desarrolle, depure y documente un programa para el problema
+2.6 en cualquier lenguaje de alto nivel o de macros, de su elección.
+Emplee la función coseno de la biblioteca de su computadora para
+determinar el valor verdadero. Haga que el programa imprima en
+cada paso la serie de aproximación y el error. Como caso de prueba, utilice el programa para calcular valores desde cos(1.25) hasta
+incluir el término x10/10! Interprete los resultados.
+2.9 El algoritmo siguiente está diseñado para determinar la calificación de un curso que consiste en cuestionarios, tareas y un
+examen final:
+Paso 1: Introducir la clave y nombre del curso.
+
+Paso 2: Introducir factores de ponderación para los cuestionarios
+(C), tareas (T) y examen final (E).
+Paso 3: Introducir las calificaciones de las preguntas y determinar su promedio (PC).
+Paso 4: Introducir las calificaciones de las tareas y determinar
+su promedio (PT).
+Paso 5: Si el curso tiene una calificación final, continuar con el
+paso 6. Si no, ir al paso 9.
+Paso 6: Introducir la calificación del examen final, (F).
+Paso 7: Determinar la calificación promedio, CP, de acuerdo
+con
+CP C PC T PT E F
+CTE = × +× +×
+( ++ ) × () %100
+Paso 8: Ir al paso 10.
+Paso 9: Determinar la calificación promedio, CP, de acuerdo
+con
+CP C PC T PT
+CT = × +×
+( + ) × () %100
+Paso 10: Imprimir la clave y nombre del curso, y la calificación
+promedio.
+Paso 11: Finalizar el cálculo.
+a) Escriba un seudocódigo bien estructurado para implementar
+este algoritmo.
+b) Escriba, depure y documente un programa estructurado de
+computadora basado en este algoritmo. Pruébelo con los
+datos siguientes para calcular una califi cación sin el examen
+fi nal, y otra con éste. C = 35; T = 30; E = 35; cuestionario
+= 98, 85, 90, 65 y 99; tareas = 95, 90, 87, 100, 92 y 77; y
+examen fi nal = 92.
+2.10 El método antiguo de dividir y promediar, para obtener el
+valor aproximado de la raíz cuadrada de cualquier número positivo a se puede formular como
+x x ax = + /
+2
+ a) Escriba un seudocódigo bien estructurado para implementar
+este algoritmo como se ilustra en la fi gura P2.10. Utilice la
+indentación apropiada para que la estructura sea clara.
+ b) Desarrolle, depure y documente un programa para implementar esta ecuación en cualquier lenguaje de algo nivel, o
+de macros, de su elección. Estructure su código de acuerdo
+con la fi gura P2.10.
+2.11 Se invierte cierta cantidad de dinero en una cuenta en la
+que el interés se capitaliza al final del periodo. Debe determinarse el valor futuro, F, que se obtiene con cierta tasa de interés, 
+i,
+después de n periodos, por medio de la fórmula siguiente:
+F = P (1 + i)
+n
+
+Escriba un programa que calcule el valor futuro de una inversión
+para cada año, desde 1 hasta n. La entrada para la función debe
+incluir la inversión inicial, P, la tasa de interés, i (en forma decimal), y el número de años, n, para el que ha de calcularse el
+valor futuro. La salida debe consistir en una tabla con encabezados y columnas para n y F. Corra el programa para P = $100 000,
+i = 0.06, y n = 5 años.
+2.12 Las fórmulas económicas están disponibles para calcular
+los pagos anuales de préstamos. Suponga que obtiene en préstamo cierta cantidad de dinero P y acuerda devolverla en n pagos
+anuales con una tasa de interés de i. La fórmula para calcular el
+pago anual A es:
+AP ii
+i
+n
+n = +
++−
+()
+()
+1
+11
+Escriba un programa para calcular A. Pruébelo con P = $55 000
+y una tasa de interés de 6.6% (i = 0.066). Calcule los resultados
+para n = 1, 2, 3, 4 y 5, y muestre los resultados en forma de tabla
+con encabezados y columnas para n y A.
+2.13 La temperatura promedio diaria para cierta área se aproxima por medio de la función siguiente,
+
+T = Tmedia + (Tmáxima – Tmedia) cos(w(t – t
+máxima))
+donde Tmedia = temperatura promedio anual, t
+máxima = temperatura
+máxima, w = frecuencia de la variación anual (= 2π/365), y
+t
+máxima = día de la temperatura máxima (≅ 205 d). Desarrolle un
+programa que calcule la temperatura promedio entre dos días del
+año para una ciudad en particular. Pruébelo para a) enero-febrero (t = 0 a 59) en Miami, Florida (Tmedia = 22.1ºC; Tmáxima = 
+28.3ºC),
+y b) julio-agosto (t = 180 a 242) en Boston, Massachussetts
+(Tmedia = 10.7ºC; Tmáxima = 22.9ºC).
+2.14 Desarrolle, depure y pruebe un programa en cualquier lenguaje de alto nivel, o de macros, de su elección, a fin de calcu lar
+la velocidad del paracaídas que cae como se explicó en el ejemplo
+1.2. Diseñe el programa de modo que permita al usuario introducir
+valores para el coeficiente de arrastre y la masa. Pruebe el programa con la reproducción de los resultados del ejemplo 1.2. Repita
+el cálculo pero utilice tamaños de paso de 1 y 0.5 s. Compare sus
+resultados con la solución analítica que se obtuvo previamente, en
+el Ejemplo 1.1. Un tamaño de paso más pequeño, ¿hace que los
+resultados sean mejores o peores? Explique sus resultados.
+2.15 El método de la burbuja es una técnica de ordenamiento
+ineficiente pero fácil de programar. La idea que subyace al ordenamiento consiste en avanzar hacia abajo a través de un arreglo,
+comparar los pares adyacentes e intercambiar los valores si no
+están en orden. Para que este método ordene por completo un
+arreglo, es necesario que lo recorra muchas veces. Conforme se
+avanza para un ordenamiento en orden ascendente, los elementos
+más pequeños del arreglo parecen ascender como burbujas.
+Eventualmente, habrá un paso por el arreglo que ya no requiera
+intercambios. En ese momento, el arreglo estará ordenado. Después del primer paso, el valor más grande cae directamente
+hasta el fondo. En consecuencia, el segundo paso sólo tiene que
+proceder del segundo al último valor, y así sucesivamente. Desarrolle un programa que tome un arreglo de 20 números al azar
+y los ordene en forma ascendente con la técnica de la burbuja
+(véase la figura P2.15).
+2.16 En la figura P2.16 se muestra un tanque cilíndrico con base
+cónica. Si el nivel del líquido está muy bajo en la parte cónica,
+el volumen simplemente es el volumen del cono de líquido. Si el
+nivel del líquido está entre la parte cilíndrica, el volumen total
+de líquido incluye la parte cónica llena y la parte cilíndrica parcialmente llena. Escriba un procedimiento bien estructurado de
+función para calcular el volumen del tanque como función de los
+valores dados de R y d. Utilice estructuras de control de decisiones (como If/Then, Elself, Else, End If). Diseñe la función de
+modo que produzca el volumen en todos los casos en los que la
+profundidad sea menor que 3R. Genere un mensaje de error
+(“Sobrepasado”) si se rebasa la altura del tanque, es decir, d >
+3R. Pruébelo con los datos siguientes:
+
+2.17 Se requieren dos distancias para especificar la ubicación
+de un punto en relación con el origen en un espacio de dos dimensiones (Véase la figura P2.17):
+• Las distancias horizontal y vertical (x, y) en coordenadas
+cartesianas.
+• El radio y el ángulo (r, q) en coordenadas radiales.
+Es relativamente fácil calcular las coordenadas cartesianas (x, y)
+sobre la base de las coordenadas polares (r, q). El proceso inverso
+no es tan simple. El radio se calcula con la fórmula que sigue:
+
+r xy =+22
+Si las coordenadas quedan dentro del primer o cuarto cuadrante
+(p. ej., x > 0), entonces se emplea una fórmula sencilla para el
+cálculo de q:
+θ = ⎛
+⎝
+⎞
+⎠ tan–1 y
+x
+La dificultad surge en los demás casos. La tabla siguiente resume
+las posibilidades:
+x y θ
+ <0 >0 tan–1(y/x) + p
+ <0 <0 tan–1(y/x) – p
+ <0 =0 p
+ =0 >0 p/2
+ =0 <0 – p/2
+ =0 =0 0
+ a) Escriba un diagrama de fl ujo bien estructurado para un procedimiento de subrutina a fi n de calcular r y q como función
+de x y y. Exprese los resultados fi nales para q, en grados.
+ b) Escriba una procedimiento bien estructurado de función con
+base en el diagrama de fl ujo. Pruebe el programa de modo
+que se llene la tabla que sigue:
+
+2.18 Desarrolle un procedimiento bien estructurado de función
+que lea una calificación numérica entre 0 y 100 y devuelva una
+letra, de acuerdo con el esquema siguiente:
+Letra Criterio
+ A 90 ≤ califi cación numérica ≤ 100
+ B 80 ≤ califi cación numérica < 90
+ C 70 ≤ califi cación numérica < 80
+ D 60 ≤ califi cación numérica < 70
+ F califi cación numérica
+
+2.19 Desarrolle un procedimiento bien estructurado de función
+para determinar a) el factorial de un número; b) el valor más
+pequeño de un vector, y c) el promedio de los valores de un
+vector.
+2.20 Desarrolle programas bien estructurados para a) determinar
+la raíz cuadrada de la suma de los cuadrados de los elementos de
+un arreglo bidimensional (p. ej., una matriz), y b) normalizar una
+matriz por medio de dividir cada renglón entre el valor absoluto máximo en el renglón de modo que el elemento mayor en cada
+renglón sea 1.
+
+

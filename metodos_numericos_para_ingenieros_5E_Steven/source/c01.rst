@@ -18,27 +18,11 @@ personales) y su asociación con los métodos numéricos han influido de manera 
 actual de los problemas en ingeniería. Antes de la era de la computadora los ingenieros
 sólo contaban con tres métodos para la solución de problemas:
 
-1. Se encontraban las soluciones de algunos problemas usando métodos exactos o
-analíticos. Dichas soluciones resultaban útiles y proporcionaban una comprensión
-excelente del comportamiento de algunos sistemas. No obstante, las soluciones
-analíticas sólo pueden encontrarse para una clase limitada de problemas. Éstos incluyen aquellos que pueden aproximarse mediante 
-modelos lineales y también
-aquellos que tienen una geometría simple y de baja dimensión. En consecuencia, las
-soluciones analíticas tienen un valor práctico limitado porque la mayoría de los
-problemas reales son no lineales, e implican formas y procesos complejos.
+1. Se encontraban las soluciones de algunos problemas usando métodos exactos o analíticos. Dichas soluciones resultaban útiles y proporcionaban una comprensión excelente del comportamiento de algunos sistemas. No obstante, las soluciones analíticas sólo pueden encontrarse para una clase  limitada de problemas. Éstos incluyen aquellos que pueden aproximarse mediante  modelos lineales y también aquellos que tienen una geometría simple y de baja dimensión. En consecuencia, las soluciones analíticas  tienen un valor práctico limitado porque la mayoría de los problemas reales son no lineales, e implican formas y procesos complejos.
 
-2. Para analizar el comportamiento de los sistemas se usaban soluciones gráficas, las
-cuales tomaban la forma de gráficas o nomogramas; aunque las técnicas gráficas se
-utilizan a menudo para resolver problemas complejos, los resultados no son muy
-precisos. Además, las soluciones gráficas (sin la ayuda de una computadora) son en
-extremo tediosas y difíciles de implementar. Finalmente, las técnicas gráficas están
-limitadas a los problemas que puedan describirse usando tres dimensiones o menos.
+2. Para analizar el comportamiento de los sistemas se usaban soluciones gráficas, las cuales tomaban la forma de gráficas o nomogramas; aunque las técnicas gráficas se utilizan a menudo para resolver problemas complejos, los resultados no son muy precisos. Además, las soluciones gráficas (sin la ayuda de una computadora) son en extremo tediosas y difíciles de implementar. Finalmente, las técnicas gráficas están limitadas a los problemas que puedan describirse usando tres dimensiones o menos.
 
-3. Para implementar los métodos numéricos se utilizaban calculadoras y reglas de
-cálcu lo. Aunque en teoría dichas aproximaciones deberían ser perfectamente adecuadas para resolver problemas complicados, en la 
-práctica se presentan varias dificultades debido a que los cálculos manuales son lentos y tediosos. Además, los
-resultados no son consistentes, ya que surgen equivocaciones cuando se efectúan
-los numerosos cálculos de esta manera.
+3. Para implementar los métodos numéricos se utilizaban calculadoras y reglas de cálculo. Aunque en teoría dichas aproximaciones deberían ser perfectamente adecuadas para resolver problemas complicados, en la práctica se presentan varias dificultades debido a que los cálculos manuales son lentos y tediosos. Además,  resultados no son consistentes, ya que surgen equivocaciones cuando se efectúan los numerosos cálculos de esta manera.
 
 Antes del uso de la computadora se gastaba bastante energía en la técnica misma
 de solución, en lugar de usarla en la definición del problema y su interpretación (figura PT1.1a). Esta situación desafortunada se 
@@ -68,37 +52,15 @@ mencionar que la reciente evolución de computadoras personales de bajo costo ha
 capacidades de cómputo. Además,
 existen diversas razones por las cuales se deben estudiar los métodos numéricos:
 
-1. Los métodos numéricos son herramientas muy poderosas para la solución de problemas. Son capaces de manipular sistemas de 
-ecuaciones grandes, manejar no linealidades y resolver geometrías complicadas, comunes en la práctica de la
-ingeniería y, a menudo, imposibles de resolver en forma analítica. Por lo tanto,
-aumentan la habilidad de quien los estudia para resolver problemas.
+1. Los métodos numéricos son herramientas muy poderosas para la solución de problemas. Son capaces de manipular sistemas de ecuaciones grandes, manejar no linealidades y resolver geometrías complicadas, comunes en la práctica de la ingeniería y, a menudo, imposibles de resolver en forma analítica. Por lo tanto, aumentan la habilidad de quien los estudia para resolver problemas.
 
-2. En el transcurso de su carrera, es posible que el lector tenga la oportunidad de utilizar paquetes disponibles comercialmente, o 
-programas “enlatados” que contengan
-métodos numéricos. El uso eficiente de estos programas depende del buen entendimiento de la teoría básica en que se basan tales 
-métodos.
+2. En el transcurso de su carrera, es posible que el lector tenga la oportunidad de utilizar paquetes disponibles comercialmente, o programas “enlatados” que contengan métodos numéricos. El uso eficiente de estos programas depende del buen entendimiento de la teoría básica en que se basan tales métodos.
 
-3. Hay muchos problemas que no pueden resolverse con programas “enlatados”. Si
-usted es conocedor de los métodos numéricos y es hábil en la programación de
-computadoras, entonces tiene la capacidad de diseñar sus propios programas para
-resolver los problemas, sin tener que comprar un software costoso.
+3. Hay muchos problemas que no pueden resolverse con programas “enlatados”. Si usted es conocedor de los métodos numéricos y es hábil en la programación de computadoras, entonces tiene la capacidad de diseñar sus propios programas para resolver los problemas, sin tener que comprar un software costoso.
 
-4. Los métodos numéricos son un vehículo eficiente para aprender a servirse de las
-computadoras. Es bien sabido que una forma efectiva de aprender programación
-consiste en escribir programas para computadora. Debido a que la mayoría de los
-métodos numéricos están diseñados para usarlos en las computadoras, son ideales
-para tal propósito. Además, son especialmente adecuados para ilustrar el poder y las
-limitaciones de las computadoras. Cuando usted desarrolle en forma satisfactoria
-los métodos numéricos en computadora y los aplique para resolver los problemas
-que de otra manera resultarían inaccesibles, usted dispondrá de una excelente demostración de cómo las computadoras sirven para su 
-desarrollo profesional. Al
-mismo tiempo, aprenderá a reconocer y controlar los errores de aproximación que
-son inseparables de los cálculos numéricos a gran escala.
+4. Los métodos numéricos son un vehículo eficiente para aprender a servirse de las computadoras. Es bien sabido que una forma efectiva de aprender programación consiste en escribir programas para computadora. Debido a que la mayoría de los métodos numéricos están diseñados para usarlos en las computadoras, son ideales para tal propósito. Además, son especialmente adecuados para ilustrar el poder y las limitaciones de las computadoras. Cuando usted desarrolle en forma satisfactoria los métodos numéricos en computadora y los aplique para resolver los problemas que de otra manera resultarían inaccesibles, usted dispondrá de una excelente demostración de cómo las computadoras sirven para su  desarrollo profesional. Al mismo tiempo, aprenderá a reconocer y controlar los errores de aproximación que son inseparables de los cálculos numéricos a gran escala.
 
-5. Los métodos numéricos son un medio para reforzar su comprensión de las matemáticas, ya que una de sus funciones es convertir las 
-matemáticas superiores en operaciones aritméticas básicas, de esta manera se puede profundizar en los temas que
-de otro modo resultarían oscuros. Esta perspectiva dará como resultado un aumento de
-su capacidad de comprensión y entendimiento en la materia.
+5. Los métodos numéricos son un medio para reforzar su comprensión de las matemáticas, ya que una de sus funciones es convertir las matemáticas superiores en operaciones aritméticas básicas, de esta manera se puede profundizar en los temas que de otro modo resultarían oscuros. Esta perspectiva dará como resultado un aumento de su capacidad de comprensión y entendimiento en la materia.
 
 **PT1.2 ANTECEDENTES MATEMÁTICOS**
 
@@ -109,19 +71,9 @@ matemáticas y la computación, en esta sección no se revisará ningún tema ma
 específico. En vez de ello se presentan los temas del contenido matemático que se cubren
 en este libro. Éstos se resumen en la figura PT1.2 y son:
 
-1. Raíces de ecuaciones (figura PT1.2a). Estos problemas se relacionan con el valor
-de una variable o de un parámetro que satisface una ecuación no lineal. Son especialmente valiosos en proyectos de ingeniería, donde 
-con frecuencia resulta imposible despejar de manera analítica los parámetros de las ecuaciones de diseño.
+1. Raíces de ecuaciones (figura PT1.2a). Estos problemas se relacionan con el valor de una variable o de un parámetro que satisface una ecuación no lineal. Son especialmente valiosos en proyectos de ingeniería, donde con frecuencia resulta imposible despejar de manera analítica los parámetros de las ecuaciones de diseño.
 
-2. Sistemas de ecuaciones algebraicas lineales (figura PT1.2b). En esencia, se trata de
-problemas similares a los de raíces de ecuaciones, en el sentido de que están relacionados con valores que satisfacen ecuaciones. 
-Sin embargo, en lugar de satisfacer
-una sola ecuación, se busca un conjunto de valores que satisfaga simultáneamente
-un conjunto de ecuaciones algebraicas lineales, las cuales surgen en el contexto de
-una gran variedad de problemas y en todas las disciplinas de la ingeniería. En particular, se originan a partir de modelos 
-matemáticos de grandes sistemas de elementos interrelacionados, tal como estructuras, circuitos eléctricos y redes de flujo;
-aunque también se llegan a encontrar en otras áreas de los métodos numéricos como
-el ajuste de curvas y las ecuaciones diferenciales.
+2. Sistemas de ecuaciones algebraicas lineales (figura PT1.2b). En esencia, se trata de problemas similares a los de raíces de ecuaciones, en el sentido de que están relacionados con valores que satisfacen ecuaciones. Sin embargo, en lugar de satisfacer una sola ecuación, se busca un conjunto de valores que satisfaga simultáneamente un conjunto de ecuaciones algebraicas lineales, las cuales surgen en el contexto de una gran variedad de problemas y en todas las disciplinas de la ingeniería. En particular, se originan a partir de modelos matemáticos de grandes sistemas de elementos interrelacionados, tal como estructuras, circuitos eléctricos y redes de flujo; aunque también se llegan a encontrar en otras áreas de los métodos numéricos como el ajuste de curvas y las ecuaciones diferenciales.
 
 3. Optimización (figura PT1.2c). En estos problemas se trata de determinar el valor o
 los valores de una variable independiente que corresponden al “mejor” o al valor

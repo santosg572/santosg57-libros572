@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; документација analisis numerico 01</title>
+    <title>MODELOS, COMPUTADORAS Y ANÁLISIS DEL ERROR &#8212; документација analisis numerico 01</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <script src="_static/documentation_options.js?v=cb95fe6c"></script>
@@ -13,7 +13,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Индекс" href="genindex.html" />
     <link rel="search" title="Претрага" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="prefacio.html" />
+    <link rel="prev" title="prefacio" href="prefacio.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,43 +31,41 @@
 
           <div class="body" role="main">
             
-  <p>MODELOS, COMPUTADORAS
-Y ANÁLISIS DEL ERROR</p>
-<blockquote>
-<div><p>PT1.1 MOTIVACIÓN</p>
-</div></blockquote>
+  <section id="modelos-computadoras-y-analisis-del-error">
+<h1>MODELOS, COMPUTADORAS Y ANÁLISIS DEL ERROR<a class="headerlink" href="#modelos-computadoras-y-analisis-del-error" title="Link to this heading">¶</a></h1>
+<p><strong>PT1.1 MOTIVACIÓN</strong></p>
 <p>Los métodos numéricos constituyen técnicas mediante las cuales es posible formular
 problemas matemáticos, de tal forma que puedan resolverse utilizando operaciones
 aritméticas. Aunque existen muchos tipos de métodos numéricos, éstos comparten una
 característica común: invariablemente requieren de un buen número de tediosos cálculos
 aritméticos. No es raro que con el desarrollo de computadoras digitales eficientes y rápidas, el papel de los métodos numéricos en
 la solución de problemas en ingeniería haya
-aumentado de forma considerable en los últimos años.
-PT1.1.1 Métodos sin computadora
-Además de proporcionar un aumento en la potencia de cálculo, la disponibilidad creciente de las computadoras (en especial de las
+aumentado de forma considerable en los últimos años.</p>
+<p><strong>PT1.1.1 Métodos sin computadora</strong></p>
+<p>Además de proporcionar un aumento en la potencia de cálculo, la disponibilidad creciente de las computadoras (en especial de las
 personales) y su asociación con los métodos numéricos han influido de manera muy significativa en el proceso de la solución
 actual de los problemas en ingeniería. Antes de la era de la computadora los ingenieros
-sólo contaban con tres métodos para la solución de problemas:
-1. Se encontraban las soluciones de algunos problemas usando métodos exactos o
+sólo contaban con tres métodos para la solución de problemas:</p>
+<p>1. Se encontraban las soluciones de algunos problemas usando métodos exactos o
 analíticos. Dichas soluciones resultaban útiles y proporcionaban una comprensión
 excelente del comportamiento de algunos sistemas. No obstante, las soluciones
 analíticas sólo pueden encontrarse para una clase limitada de problemas. Éstos incluyen aquellos que pueden aproximarse mediante
 modelos lineales y también
 aquellos que tienen una geometría simple y de baja dimensión. En consecuencia, las
 soluciones analíticas tienen un valor práctico limitado porque la mayoría de los
-problemas reales son no lineales, e implican formas y procesos complejos.
-2. Para analizar el comportamiento de los sistemas se usaban soluciones gráficas, las
+problemas reales son no lineales, e implican formas y procesos complejos.</p>
+<p>2. Para analizar el comportamiento de los sistemas se usaban soluciones gráficas, las
 cuales tomaban la forma de gráficas o nomogramas; aunque las técnicas gráficas se
 utilizan a menudo para resolver problemas complejos, los resultados no son muy
 precisos. Además, las soluciones gráficas (sin la ayuda de una computadora) son en
 extremo tediosas y difíciles de implementar. Finalmente, las técnicas gráficas están
-limitadas a los problemas que puedan describirse usando tres dimensiones o menos.
-3. Para implementar los métodos numéricos se utilizaban calculadoras y reglas de
+limitadas a los problemas que puedan describirse usando tres dimensiones o menos.</p>
+<p>3. Para implementar los métodos numéricos se utilizaban calculadoras y reglas de
 cálcu lo. Aunque en teoría dichas aproximaciones deberían ser perfectamente adecuadas para resolver problemas complicados, en la
 práctica se presentan varias dificultades debido a que los cálculos manuales son lentos y tediosos. Además, los
 resultados no son consistentes, ya que surgen equivocaciones cuando se efectúan
-los numerosos cálculos de esta manera.
-Antes del uso de la computadora se gastaba bastante energía en la técnica misma
+los numerosos cálculos de esta manera.</p>
+<p>Antes del uso de la computadora se gastaba bastante energía en la técnica misma
 de solución, en lugar de usarla en la definición del problema y su interpretación (figura PT1.1a). Esta situación desafortunada se
 debía al tiempo y trabajo monótono que
 se requería para obtener resultados numéricos con técnicas que no utilizaban la computadora.</p>
@@ -81,29 +79,29 @@ forma considerable, la capacidad para enfrentar y resolver los problemas; como r
 las habilidades creativas personales. En
 consecuencia, es posible dar más importancia a la formulación de un problema y a la
 interpretación de la solución, así como a su incorporación al sistema total, o conciencia
-“holística” (figura PT1.1b).
-PT1.1.2 Los métodos numéricos y la práctica en ingeniería
-Desde finales de la década de los cuarenta, la amplia disponibilidad de las computadoras digitales han llevado a una verdadera
+“holística” (figura PT1.1b).</p>
+<p><strong>PT1.1.2 Los métodos numéricos y la práctica en ingeniería</strong></p>
+<p>Desde finales de la década de los cuarenta, la amplia disponibilidad de las computadoras digitales han llevado a una verdadera
 explosión en el uso y desarrollo de los métodos
 numéricos. Al principio, este crecimiento estaba limitado por el costo de procesamiento de las grandes computadoras (mainframes),
 por lo que muchos ingenieros seguían
-usando simples procedimientos analíticos en una buena parte de su trabajo. Vale la pena</p>
-<p>mencionar que la reciente evolución de computadoras personales de bajo costo ha permitido el acceso, de mucha gente, a las poderosas
+usando simples procedimientos analíticos en una buena parte de su trabajo. Vale la pena
+mencionar que la reciente evolución de computadoras personales de bajo costo ha permitido el acceso, de mucha gente, a las poderosas
 capacidades de cómputo. Además,
-existen diversas razones por las cuales se deben estudiar los métodos numéricos:
-1. Los métodos numéricos son herramientas muy poderosas para la solución de problemas. Son capaces de manipular sistemas de
+existen diversas razones por las cuales se deben estudiar los métodos numéricos:</p>
+<p>1. Los métodos numéricos son herramientas muy poderosas para la solución de problemas. Son capaces de manipular sistemas de
 ecuaciones grandes, manejar no linealidades y resolver geometrías complicadas, comunes en la práctica de la
 ingeniería y, a menudo, imposibles de resolver en forma analítica. Por lo tanto,
-aumentan la habilidad de quien los estudia para resolver problemas.
-2. En el transcurso de su carrera, es posible que el lector tenga la oportunidad de utilizar paquetes disponibles comercialmente, o
+aumentan la habilidad de quien los estudia para resolver problemas.</p>
+<p>2. En el transcurso de su carrera, es posible que el lector tenga la oportunidad de utilizar paquetes disponibles comercialmente, o
 programas “enlatados” que contengan
 métodos numéricos. El uso eficiente de estos programas depende del buen entendimiento de la teoría básica en que se basan tales
-métodos.
-3. Hay muchos problemas que no pueden resolverse con programas “enlatados”. Si
+métodos.</p>
+<p>3. Hay muchos problemas que no pueden resolverse con programas “enlatados”. Si
 usted es conocedor de los métodos numéricos y es hábil en la programación de
 computadoras, entonces tiene la capacidad de diseñar sus propios programas para
-resolver los problemas, sin tener que comprar un software costoso.
-4. Los métodos numéricos son un vehículo eficiente para aprender a servirse de las
+resolver los problemas, sin tener que comprar un software costoso.</p>
+<p>4. Los métodos numéricos son un vehículo eficiente para aprender a servirse de las
 computadoras. Es bien sabido que una forma efectiva de aprender programación
 consiste en escribir programas para computadora. Debido a que la mayoría de los
 métodos numéricos están diseñados para usarlos en las computadoras, son ideales
@@ -113,63 +111,60 @@ los métodos numéricos en computadora y los aplique para resolver los problemas
 que de otra manera resultarían inaccesibles, usted dispondrá de una excelente demostración de cómo las computadoras sirven para su
 desarrollo profesional. Al
 mismo tiempo, aprenderá a reconocer y controlar los errores de aproximación que
-son inseparables de los cálculos numéricos a gran escala.
-5. Los métodos numéricos son un medio para reforzar su comprensión de las matemáticas, ya que una de sus funciones es convertir las
+son inseparables de los cálculos numéricos a gran escala.</p>
+<p>5. Los métodos numéricos son un medio para reforzar su comprensión de las matemáticas, ya que una de sus funciones es convertir las
 matemáticas superiores en operaciones aritméticas básicas, de esta manera se puede profundizar en los temas que
 de otro modo resultarían oscuros. Esta perspectiva dará como resultado un aumento de
 su capacidad de comprensión y entendimiento en la materia.</p>
-<blockquote>
-<div><p>PT1.2 ANTECEDENTES MATEMÁTICOS</p>
-</div></blockquote>
+<p><strong>PT1.2 ANTECEDENTES MATEMÁTICOS</strong></p>
 <p>Cada parte de este libro requiere de algunos conocimientos matemáticos, por lo que el
 material introductorio de cada parte comprende una sección que incluye los fundamentos matemáticos. Como la parte uno, que está
 dedicada a aspectos básicos sobre las
 matemáticas y la computación, en esta sección no se revisará ningún tema matemático
 específico. En vez de ello se presentan los temas del contenido matemático que se cubren
-en este libro. Éstos se resumen en la figura PT1.2 y son:
-1. Raíces de ecuaciones (figura PT1.2a). Estos problemas se relacionan con el valor
+en este libro. Éstos se resumen en la figura PT1.2 y son:</p>
+<p>1. Raíces de ecuaciones (figura PT1.2a). Estos problemas se relacionan con el valor
 de una variable o de un parámetro que satisface una ecuación no lineal. Son especialmente valiosos en proyectos de ingeniería, donde
 con frecuencia resulta imposible despejar de manera analítica los parámetros de las ecuaciones de diseño.</p>
 <p>2. Sistemas de ecuaciones algebraicas lineales (figura PT1.2b). En esencia, se trata de
 problemas similares a los de raíces de ecuaciones, en el sentido de que están relacionados con valores que satisfacen ecuaciones.
 Sin embargo, en lugar de satisfacer
 una sola ecuación, se busca un conjunto de valores que satisfaga simultáneamente
-un conjunto de ecuaciones algebraicas lineales, las cuales surgen en el contexto de</p>
-<p>una gran variedad de problemas y en todas las disciplinas de la ingeniería. En particular, se originan a partir de modelos
+un conjunto de ecuaciones algebraicas lineales, las cuales surgen en el contexto de
+una gran variedad de problemas y en todas las disciplinas de la ingeniería. En particular, se originan a partir de modelos
 matemáticos de grandes sistemas de elementos interrelacionados, tal como estructuras, circuitos eléctricos y redes de flujo;
 aunque también se llegan a encontrar en otras áreas de los métodos numéricos como
-el ajuste de curvas y las ecuaciones diferenciales.
-3. Optimización (figura PT1.2c). En estos problemas se trata de determinar el valor o
+el ajuste de curvas y las ecuaciones diferenciales.</p>
+<p>3. Optimización (figura PT1.2c). En estos problemas se trata de determinar el valor o
 los valores de una variable independiente que corresponden al “mejor” o al valor
 óptimo de una función. De manera que, como se observa en la figura PT1.2c, la
 optimización considera la identificación de máximos y mínimos. Tales problemas
 se presentan comúnmente en el contexto del diseño en ingeniería. También surgen
 en otros métodos numéricos. Nosotros nos ocuparemos de la optimización tanto para
 una sola variable sin restricciones como para varias variables sin restricciones.
-También describiremos la optimización restringida dando especial énfasis a la programación lineal.
-4. Ajuste de curvas (figura PT1.2d). A menudo se tendrá que ajustar curvas a un conjunto de datos representados por puntos. Las
+También describiremos la optimización restringida dando especial énfasis a la programación lineal.</p>
+<p>4. Ajuste de curvas (figura PT1.2d). A menudo se tendrá que ajustar curvas a un conjunto de datos representados por puntos. Las
 técnicas desarrolladas para tal propósito se dividen en dos categorías generales: regresión e interpolación. La primera se
 emplea cuando hay un significativo grado de error asociado con los datos; con frecuencia los datos experimentales son de este tipo.
 Para estas situaciones, la estrategia es encontrar una curva que represente la tendencia general de los datos, sin
 necesidad de tocar los puntos individuales. En contraste, la interpolación se utiliza
 cuando el objetivo es determinar valores intermedios entre datos que estén, relativamente, libres de error. Tal es el caso de la
 información tabulada. En dichas situaciones, la estrategia consiste en ajustar una curva directamente mediante los puntos
-obtenidos como datos y usar la curva para predecir valores intermedios.
-5. Integración (figura PT1.2e). Como hemos representado gráficamente, la interpretación de la integración numérica es la
-determinación del área bajo la curva. La inte</p>
-<p>gración tiene diversas aplicaciones en la práctica de la ingeniería, que van desde la
+obtenidos como datos y usar la curva para predecir valores intermedios.</p>
+<p>5. Integración (figura PT1.2e). Como hemos representado gráficamente, la interpretación de la integración numérica es la
+determinación del área bajo la curva. La integración tiene diversas aplicaciones en la práctica de la ingeniería, que van desde la
 determinación de los centroides de objetos con formas extrañas, hasta el cálculo de
 cantidades totales basadas en conjuntos de medidas discretas. Además, las fórmulas
-de integración numérica desempeñan un papel importante en la solución de ecuaciones diferenciales.
-6. Ecuaciones diferenciales ordinarias (figura PT1.2f). Éstas tienen una enorme importancia en la práctica de la ingeniería, lo cual
+de integración numérica desempeñan un papel importante en la solución de ecuaciones diferenciales.</p>
+<p>6. Ecuaciones diferenciales ordinarias (figura PT1.2f). Éstas tienen una enorme importancia en la práctica de la ingeniería, lo cual
 se debe a que muchas leyes físicas
 están expresadas en términos de la razón de cambio de una cantidad, más que en
 términos de la cantidad misma. Entre los ejemplos tenemos desde los modelos de
 predicción demográfica (razón de cambio de la población), hasta la aceleración
 de un cuerpo que cae (razón de cambio de la velocidad). Se tratan dos tipos de problemas: problemas con valor inicial y problemas
 con valores en la frontera. Además
-veremos el cálculo de valores propios.
-7. Ecuaciones diferenciales parciales (figura PT1.2g). Las ecuaciones diferenciales
+veremos el cálculo de valores propios.</p>
+<p>7. Ecuaciones diferenciales parciales (figura PT1.2g). Las ecuaciones diferenciales
 parciales sirven para caracterizar sistemas de ingeniería, en los que el comportamiento de una cantidad física se expresa en
 términos de su razón de cambio con
 respecto a dos o más variables independientes. Entre los ejemplos tenemos la distribución de temperatura en estado estacionario
@@ -180,75 +175,83 @@ haremos énfasis en los métodos de las diferencias finitas que aproximan la sol
 usando puntos discretos (figura PT1.2g). No obstante, también presentaremos una
 introducción a los métodos de elementos finitos, los cuales usan una aproximación
 con piezas discretas.</p>
-<blockquote>
-<div><p>PT1.3 ORIENTACIÓN</p>
-</div></blockquote>
+<p><strong>PT1.3 ORIENTACIÓN</strong></p>
 <p>Resulta útil esta orientación antes de proceder a la introducción de los métodos numéricos. Lo que sigue está pensado como una vista
 general del material contenido en la
-parte uno. Se incluyen, además, algunos objetivos como ayuda para concentrar el esfuerzo del lector en el estudio de los temas.
-PT1.3.1 Alcance y presentación preliminar
-La figura PT1.3 es una representación esquemática del material contenido en la parte
+parte uno. Se incluyen, además, algunos objetivos como ayuda para concentrar el esfuerzo del lector en el estudio de los temas.</p>
+<p><strong>PT1.3.1 Alcance y presentación preliminar</strong></p>
+<p>La figura PT1.3 es una representación esquemática del material contenido en la parte
 uno. Este diagrama se elaboró para ofrecer un panorama global de esta parte del libro.
 Se considera que un sentido de “imagen global” resulta importante para desarrollar una
 verdadera comprensión de los métodos numéricos. Al leer un texto es posible que se
 pierda uno en los detalles técnicos. Siempre que el lector perciba que está perdiendo la
 “imagen global” vuelva a la figura PT1.3 para orientarse nuevamente. Cada parte de este
-libro contiene una figura similar.
-La figura PT1.3 también sirve como una breve revisión inicial del material que se
+libro contiene una figura similar.</p>
+<p>La figura PT1.3 también sirve como una breve revisión inicial del material que se
 cubre en la parte uno. El capítulo 1 está diseñado para orientarle en los métodos numéricos y para motivarlo mostrándole cómo se
 utilizan dichas técnicas, en el proceso de
-elaborar modelos matemáticos aplicados a la ingeniería. El capítulo 2 es una introducción</p>
-<p>y un repaso de los aspectos de computación que están relacionados con los métodos
+elaborar modelos matemáticos aplicados a la ingeniería. El capítulo 2 es una introducción
+y un repaso de los aspectos de computación que están relacionados con los métodos
 numéricos y presenta las habilidades de programación que se deben adquirir para explotar de manera eficiente la siguiente
 información. Los capítulos 3 y 4 se ocupan del
 importante tema del análisis del error, que debe entenderse bien para el uso efectivo
 de los métodos numéricos. Además, se incluye un epílogo que presenta los elementos de
 juicio que tienen una gran importancia para el uso efectivo de los métodos numéricos.</p>
-<dl class="simple">
-<dt>TABLA PT1.1 Objetivos específi cos de estudio de la parte uno.</dt><dd><ol class="arabic simple">
+<p>TABLA PT1.1 Objetivos específi cos de estudio de la parte uno.</p>
+<blockquote>
+<div><ol class="arabic simple">
 <li><p>Reconocer la diferencia entre soluciones analíticas y numéricas.</p></li>
 <li><p>Entender cómo las leyes de la conservación se emplean para desarrollar modelos matemáticos de</p></li>
 </ol>
-</dd>
-<dt>sistemas físicos.</dt><dd><ol class="arabic simple" start="3">
+</div></blockquote>
+<p>sistemas físicos.</p>
+<blockquote>
+<div><ol class="arabic simple" start="3">
 <li><p>Defi nir diseño modular y top-down.</p></li>
 <li><p>Defi nir las reglas para la programación estructurada.</p></li>
 <li><p>Ser capaz de elaborar programas estructurados y modulares en un lenguaje de alto nivel.</p></li>
 <li><p>Saber cómo se traducen los diagramas de fl ujo estructurado y el seudocódigo al código en un</p></li>
 </ol>
-</dd>
-<dt>lenguaje de alto nivel.</dt><dd><ol class="arabic simple" start="7">
+</div></blockquote>
+<p>lenguaje de alto nivel.</p>
+<blockquote>
+<div><ol class="arabic simple" start="7">
 <li><p>Empezar a familiarizarse con cualquier software que usará junto con este texto.</p></li>
 <li><p>Reconocer la diferencia entre error de truncamiento y error de redondeo.</p></li>
 <li><p>Comprender los conceptos de cifras signifi cativas, exactitud y precisión.</p></li>
 <li><p>Conocer la diferencia entre error relativo verdadero ev, error relativo aproximado ea y error</p></li>
 </ol>
-</dd>
-<dt>aceptable es y entender cómo ea y es sirven para terminar un cálculo iterativo.</dt><dd><ol class="arabic simple" start="11">
+</div></blockquote>
+<p>aceptable es y entender cómo ea y es sirven para terminar un cálculo iterativo.</p>
+<blockquote>
+<div><ol class="arabic simple" start="11">
 <li><p>Entender cómo se representan los números en las computadoras y cómo tal representación induce</p></li>
 </ol>
-</dd>
-<dt>errores de redondeo. En particular, conocer la diferencia entre precisión simple y extendida.</dt><dd><ol class="arabic simple" start="12">
+</div></blockquote>
+<p>errores de redondeo. En particular, conocer la diferencia entre precisión simple y extendida.</p>
+<blockquote>
+<div><ol class="arabic simple" start="12">
 <li><p>Reconocer cómo la aritmética de la computadora llega a presentar y amplifi car el error de</p></li>
 </ol>
-</dd>
-<dt>redondeo en los cálculos. En particular, apreciar el problema de la cancelación por sustracción.</dt><dd><ol class="arabic simple" start="13">
+</div></blockquote>
+<p>redondeo en los cálculos. En particular, apreciar el problema de la cancelación por sustracción.</p>
+<blockquote>
+<div><ol class="arabic simple" start="13">
 <li><p>Saber cómo la serie de Taylor y su residuo se emplean para representar funciones continuas.</p></li>
 <li><p>Conocer la relación entre diferencias fi nitas divididas y derivadas.</p></li>
 <li><p>Ser capaz de analizar cómo los errores se propagan a través de las relaciones funcionales.</p></li>
 <li><p>Estar familiarizado con los conceptos de estabilidad y condición.</p></li>
 <li><p>Familiarizarse con las consideraciones que se describen en el epílogo de la parte uno.</p></li>
 </ol>
-</dd>
-</dl>
-<p>PT1.3.2 Metas y objetivos
-Objetivos de estudio. Al terminar la parte uno el lector deberá estar preparado para
+</div></blockquote>
+<p><strong>PT1.3.2 Metas y objetivos</strong></p>
+<p>Objetivos de estudio. Al terminar la parte uno el lector deberá estar preparado para
 aventurarse en los métodos numéricos. En general, habrá adquirido una comprensión
 fundamental de la importancia de las computadoras y del papel que desempeñan las
 aproximaciones y los errores en el uso y desarrollo de los métodos numéricos. Además
 de estas metas generales, deberá dominar cada uno de los objetivos de estudio específicos
-que se muestran en la tabla PT1.1.
-Objetivos de cómputo. Al terminar de estudiar la parte uno, usted deberá tener suficientes habilidades en computación para
+que se muestran en la tabla PT1.1.</p>
+<p>Objetivos de cómputo. Al terminar de estudiar la parte uno, usted deberá tener suficientes habilidades en computación para
 desarrollar su propio software para los métodos numéricos de este texto. También será capaz de desarrollar programas de
 computadora bien estructurados y confiables basándose en seudocódigos, diagramas
 de flujo u otras formas de algoritmo. Usted deberá desarrollar la capacidad de documentar sus programas de manera que sean
@@ -257,36 +260,32 @@ Por último, además de sus propios programas, usted deberá usar paquetes de so
 junto con este libro. Paquetes como MATLAB y Excel son los ejemplos de dicho software. Usted deberá estar familiarizado con ellos,
 ya que será más cómodo utilizarlos
 para resolver después los problemas numéricos de este texto.</p>
-<p>CAPÍTULO 1
-Modelos matemáticos y solución
-de problemas en ingeniería
-El conocimiento y la comprensión son prerrequisitos para la aplicación eficaz de cualquier
+<p><strong>CAPÍTULO 1 Modelos matemáticos y solución de problemas en ingeniería</strong></p>
+<p>El conocimiento y la comprensión son prerrequisitos para la aplicación eficaz de cualquier
 herramienta. Si no sabemos cómo funcionan las herramientas, por ejemplo, tendremos
 serios problemas para reparar un automóvil, aunque la caja de herramientas sea de lo
-más completa.
-Ésta es una realidad, particularmente cuando se utilizan computadoras para resolver
+más completa.</p>
+<p>Ésta es una realidad, particularmente cuando se utilizan computadoras para resolver
 problemas de ingeniería. Aunque las computadoras tienen una gran utilidad, son prácticamente inútiles si no se comprende el
-funcionamiento de los sistemas de ingeniería.
-Esta comprensión inicialmente es empírica —es decir, se adquiere por observación
+funcionamiento de los sistemas de ingeniería.</p>
+<p>Esta comprensión inicialmente es empírica —es decir, se adquiere por observación
 y experimentación—. Sin embargo, aunque esta información obtenida de manera empírica resulta esencial, sólo estamos a la mitad del
 camino. Durante muchos años de observación y experimentación, los ingenieros y los científicos han advertido que ciertos
 aspectos de sus estudios empíricos ocurren una y otra vez. Este comportamiento general
 puede expresarse como las leyes fundamentales que engloba, en esencia, el conocimiento acumulado de la experiencia pasada. Así,
-muchos problemas de ingeniería se resuelven con el empleo de un doble enfoque: el empirismo y el análisis teórico (figura 1.1).
-Debe destacarse que ambos están estrechamente relacionados. Conforme se obtienen nuevas mediciones, las generalizaciones llegan a
+muchos problemas de ingeniería se resuelven con el empleo de un doble enfoque: el empirismo y el análisis teórico (figura 1.1).</p>
+<p>Debe destacarse que ambos están estrechamente relacionados. Conforme se obtienen nuevas mediciones, las generalizaciones llegan a
 modificarse o aun a descubrirse
 otras nuevas. De igual manera, las generalizaciones tienen una gran influencia en la
 experimentación y en las observaciones. En lo particular, las generalizaciones sirven
 para organizar principios que se utilizan para sintetizar los resultados de observaciones
 y experimentos en un sistema coherente y comprensible, del que se pueden obtener
 conclusiones. Desde la perspectiva de la solución de un problema de ingeniería, el sistema es aún más útil cuando el problema se
-expresa por medio de un modelo matemático.
-El primer objetivo de este capítulo consiste en introducir al lector a la modelación
+expresa por medio de un modelo matemático.</p>
+<p>El primer objetivo de este capítulo consiste en introducir al lector a la modelación
 matemática y su papel en la solución de problemas en ingeniería. Se mostrará también
 la forma en que los métodos numéricos figuran en el proceso.</p>
-<blockquote>
-<div><p>1.1 UN MODELO MATEMÁTICO SIMPLE</p>
-</div></blockquote>
+<p><strong>1.1 UN MODELO MATEMÁTICO SIMPLE</strong></p>
 <p>Un modelo matemático se define, de manera general, como una formulación o una
 ecuación que expresa las características esenciales de un sistema físico o de un proceso
 en términos matemáticos. En general, el modelo se representa mediante una relación
@@ -927,6 +926,7 @@ tamaño crítico.</p>
 P1.18. Si Q2 = 0.6, Q3 = 0.4, Q7 = 0.2 y Q8 = 0.3 m3
 /s, determine
 los otros flujos.</p>
+</section>
 
 
           </div>
@@ -945,12 +945,17 @@ los otros flujos.</p>
 
 
 <h3>Навигација</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prefacio.html">prefacio</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MODELOS, COMPUTADORAS Y ANÁLISIS DEL ERROR</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="prefacio.html" title="претходна глава">&lt;no title&gt;</a></li>
+      <li>Previous: <a href="prefacio.html" title="претходна глава">prefacio</a></li>
   </ul></li>
 </ul>
 </div>
